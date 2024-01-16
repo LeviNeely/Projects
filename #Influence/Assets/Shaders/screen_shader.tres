@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://806pw1w3og6q"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/screen_shader.gdshader" id="1_q6gw6"]
+
+[resource]
+shader = ExtResource("1_q6gw6")
+shader_parameter/crt_curve = 0.0
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.0
+shader_parameter/rf_switch_esque_blur = 0.5
+shader_parameter/white_noise_rate = 0.08

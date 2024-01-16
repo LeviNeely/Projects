@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbj0maff8rfgd"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_irt04"]
+[ext_resource type="Script" path="res://Scripts/Permanents/CommonPermanents/basic_trending_page.gd" id="2_sgw5j"]
+
+[node name="BasicTrendingPage" instance=ExtResource("1_irt04")]
+script = ExtResource("2_sgw5j")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Basic Trending Page: Increase virality chance by 0.01% at the start of every turn."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$15.00"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

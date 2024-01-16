@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://kpq5u5ibe0mx"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_qeavn"]
+[ext_resource type="Texture2D" uid="uid://bqb2417won5f0" path="res://Assets/PostImages/ExoticGetaway.png" id="2_4kxnu"]
+[ext_resource type="Script" path="res://Scripts/Posts/RarePosts/exotic_getaway.gd" id="2_l0il8"]
+
+[node name="Control" instance=ExtResource("1_qeavn")]
+theme_type_variation = &"RarePanelContainer"
+script = ExtResource("2_l0il8")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_4kxnu")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Exotic Getaway: If your follower base is less than 1,000, gain 25% of your follower base. Otherwise, gain 15% of your follower base and increase sponsor chance by 5%."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxvri5s6qa82j"]
+
+[ext_resource type="PackedScene" uid="uid://b7eb0sq1jy3ui" path="res://Scenes/Rewards/sponsor_reward.tscn" id="1_xa53w"]
+[ext_resource type="Texture2D" uid="uid://h88v7k7hsdrg" path="res://Assets/Icons/icons-set-1_0000s_0049_Layer-141.png" id="2_fka3g"]
+[ext_resource type="Script" path="res://Scripts/Rewards/money_reward.gd" id="2_oo4q7"]
+
+[node name="MoneyReward" instance=ExtResource("1_xa53w")]
+script = ExtResource("2_oo4q7")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_fka3g")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Congrats! You gained some money!"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="add_money"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxvyaaji3wgf6"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_2rg77"]
+[ext_resource type="Texture2D" uid="uid://dwrm7iyhtldcx" path="res://Assets/PostImages/FinancePal.png" id="2_27a2x"]
+[ext_resource type="Script" path="res://Scripts/Posts/CommonPosts/finance_pal.gd" id="2_gg1bq"]
+
+[node name="Control" instance=ExtResource("1_2rg77")]
+theme_type_variation = &"CommonPanelContainer"
+script = ExtResource("2_gg1bq")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_27a2x")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Finance Pal: Increase your money by 2%."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcl1kdn2b4hfk"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_50hyc"]
+[ext_resource type="Texture2D" uid="uid://cp5iw76uqsbu6" path="res://Assets/Icons/Followers.png" id="2_blbmn"]
+[ext_resource type="Script" path="res://Scripts/Rewards/follower_reward.gd" id="2_wi0ue"]
+
+[node name="FollowerReward" instance=ExtResource("1_50hyc")]
+custom_minimum_size = Vector2(278, 400)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 278.0
+offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_type_variation = &"CommonPanelContainer"
+script = ExtResource("2_wi0ue")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_blbmn")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Congrats! You gained more followers!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+text = "Accept"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="add_followers"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1o43me7taaob"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_0fp67"]
+[ext_resource type="Script" path="res://Scripts/Posts/LegendaryPosts/boycott_all_companies_that_support_occupation_and_genocide.gd" id="2_n5h7x"]
+[ext_resource type="Texture2D" uid="uid://cdg1cdls4xy16" path="res://Assets/PostImages/BoycottAllCompaniesThatSupportOccupationAndGenocide.png" id="3_ec5wo"]
+
+[node name="Control" instance=ExtResource("1_0fp67")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_n5h7x")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("3_ec5wo")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Boycott all Companies that Support Occupation and Genocide: Join us in boycotting large corporations that have aided or funded the occupation and genocide in Saharazad! If sponsors were greater than 0, lose 100% of sponsors."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2wanx3yugx1m"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_t6xvw"]
+[ext_resource type="Script" path="res://Scripts/Posts/NormalPosts/fit_check.gd" id="2_iumpj"]
+[ext_resource type="Texture2D" uid="uid://ckwirxjuj5rqb" path="res://Assets/PostImages/FitCheck.png" id="2_w312g"]
+
+[node name="Control" instance=ExtResource("1_t6xvw")]
+theme_type_variation = &"NormalPanelContainer"
+script = ExtResource("2_iumpj")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_w312g")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Fit Check: Gain 10% of your follower base. Cost: 10%"
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

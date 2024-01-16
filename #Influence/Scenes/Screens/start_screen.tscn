@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://b13ewokl0wkyl"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/start_screen.gd" id="1_odsog"]
+[ext_resource type="Texture2D" uid="uid://codlodhonc1gr" path="res://Assets/WindowBorder/Window_Header.png" id="1_p671w"]
+[ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_sl21q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y87ps"]
+texture = ExtResource("1_p671w")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_odsog")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 2
+material = ExtResource("1_sl21q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_y87ps")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Welcome to #Influence"
+
+[node name="Control" type="Control" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewGame" type="Button" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Game"
+
+[node name="LoadGame" type="Button" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Game"
+
+[node name="Control6" type="Control" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control7" type="Control" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Options" type="Button" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
+
+[node name="Control8" type="Control" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]

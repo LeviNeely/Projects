@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2hq1cgd72sc4"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_l7ghn"]
+[ext_resource type="Script" path="res://Scripts/Posts/UncommonPosts/uncommon_meme.gd" id="2_ceium"]
+[ext_resource type="Texture2D" uid="uid://nyd4l36p4q1n" path="res://Assets/PostImages/UncommonMeme.png" id="2_elw6h"]
+
+[node name="Control" instance=ExtResource("1_l7ghn")]
+theme_type_variation = &"UncommonPanelContainer"
+script = ExtResource("2_ceium")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_elw6h")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Uncommon Meme: If your follower base is less than 500, gain 10% of your follower base and increase virality chance by 0.5%. Otherwise, increase virality chance by 0.75%."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

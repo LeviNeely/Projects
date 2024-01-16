@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2cfemdohoddt"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_w1kf7"]
+[ext_resource type="Texture2D" uid="uid://d0joeyj3aon25" path="res://Assets/PostImages/CorporateSponsoredPost.png" id="2_07qbd"]
+[ext_resource type="Script" path="res://Scripts/Posts/RarePosts/corporate_sponsored_post.gd" id="2_ym2ch"]
+
+[node name="Control" instance=ExtResource("1_w1kf7")]
+theme_type_variation = &"RarePanelContainer"
+script = ExtResource("2_ym2ch")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_07qbd")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Corporate Sponsored Post: If your Sponsor number is 15 or greater, gain 15% of your money."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

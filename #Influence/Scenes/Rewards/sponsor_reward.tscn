@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7eb0sq1jy3ui"]
+
+[ext_resource type="PackedScene" uid="uid://dcl1kdn2b4hfk" path="res://Scenes/Rewards/follower_reward.tscn" id="1_668s6"]
+[ext_resource type="Script" path="res://Scripts/Rewards/sponsor_reward.gd" id="2_rx0dk"]
+[ext_resource type="Texture2D" uid="uid://tqab53wimuws" path="res://Assets/Icons/icons-set-1_0000s_0007_Layer-99.png" id="3_1gp38"]
+
+[node name="SponsorReward" instance=ExtResource("1_668s6")]
+script = ExtResource("2_rx0dk")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("3_1gp38")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Congrats! You gained more sponsors!"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="add_sponsors"]

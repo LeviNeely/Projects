@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgpx6tr15ojka"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_el4y8"]
+[ext_resource type="Script" path="res://Scripts/Posts/NormalPosts/diabetic_supplies.gd" id="2_bxq3r"]
+[ext_resource type="Texture2D" uid="uid://41kojnlx67dg" path="res://Assets/PostImages/DiabeticSupplies.png" id="2_ilr2w"]
+
+[node name="Control" instance=ExtResource("1_el4y8")]
+theme_type_variation = &"NormalPanelContainer"
+script = ExtResource("2_bxq3r")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_ilr2w")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Diabetic Supplies: Help lower the cost of diabetic supplies! Gain 5% of your follower base."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

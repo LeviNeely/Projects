@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dngt5yw2j5i3h"]
+
+[ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_a1hjh"]
+[ext_resource type="Script" path="res://Scripts/Screens/money_award_screen.gd" id="1_qa72c"]
+[ext_resource type="Material" uid="uid://bbkc365qlqahf" path="res://Assets/Shaders/reward_shader.tres" id="2_geith"]
+[ext_resource type="Texture2D" uid="uid://c4imvdgrdyp4n" path="res://Assets/WindowBorder/Green_Title_Bar.png" id="3_8bcn8"]
+[ext_resource type="PackedScene" uid="uid://cxvri5s6qa82j" path="res://Scenes/Rewards/money_reward.tscn" id="5_1q168"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3kxq"]
+texture = ExtResource("3_8bcn8")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qa72c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 2
+material = ExtResource("1_a1hjh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+material = ExtResource("2_geith")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_b3kxq")
+
+[node name="MoneyReward" parent="CanvasLayer/PanelContainer" instance=ExtResource("5_1q168")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4

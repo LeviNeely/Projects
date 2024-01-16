@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bswqryjmc5jij"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_0kka7"]
+[ext_resource type="Script" path="res://Scripts/Posts/NormalPosts/follow_influencers_on_the_ground_in_saharazad.gd" id="2_glimk"]
+[ext_resource type="Texture2D" uid="uid://86faiv1dcxud" path="res://Assets/PostImages/FollowInfluencersOnTheGroundInSaharazad.png" id="2_sok3s"]
+
+[node name="Control" instance=ExtResource("1_0kka7")]
+theme_type_variation = &"NormalPanelContainer"
+script = ExtResource("2_glimk")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_sok3s")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Follow Influencers on the Ground in Saharazad: Follow these incredible people as they document the horrors occurring in Saharazad. Lose 10% of your follower base. Cost: 0%"
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

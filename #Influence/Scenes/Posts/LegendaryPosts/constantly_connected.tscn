@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfk7e2dqima1g"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_68tsk"]
+[ext_resource type="Script" path="res://Scripts/Posts/LegendaryPosts/constantly_connected.gd" id="2_56gtm"]
+[ext_resource type="Texture2D" uid="uid://dhkr56v66thkc" path="res://Assets/PostImages/ConstantlyConnected.png" id="3_7opea"]
+
+[node name="Control" instance=ExtResource("1_68tsk")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_56gtm")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("3_7opea")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Constantly Connected: Each post’s stats are doubled in your post order."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

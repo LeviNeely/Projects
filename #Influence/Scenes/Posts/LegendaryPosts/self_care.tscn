@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdslbexn2uydd"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_l7nro"]
+[ext_resource type="Texture2D" uid="uid://chmcxat0anf2v" path="res://Assets/PostImages/SelfCare.png" id="2_7h5wk"]
+[ext_resource type="Script" path="res://Scripts/Posts/LegendaryPosts/self_care.gd" id="2_agj31"]
+
+[node name="Control" instance=ExtResource("1_l7nro")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_agj31")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_7h5wk")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Self Care: If this is the first card in your post order, triple all effects of both posts and permanents for this turn."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

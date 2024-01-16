@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dubohrj5y25f3"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_pgnhp"]
+[ext_resource type="Texture2D" uid="uid://dcqg34ursa5a2" path="res://Assets/PostImages/DonateAidForSaharazad.png" id="2_glsxb"]
+[ext_resource type="Script" path="res://Scripts/Posts/CommonPosts/donate_aid_for_saharazad.gd" id="2_xe7oj"]
+
+[node name="Control" instance=ExtResource("1_pgnhp")]
+theme_type_variation = &"CommonPanelContainer"
+script = ExtResource("2_xe7oj")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_glsxb")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Donate Aid For Saharazad: Help the people of Saharazad get the aid they need! Gain 1% of your follower base."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

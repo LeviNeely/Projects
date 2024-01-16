@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://h04oovvgi6y8"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/follower_award_screen.gd" id="1_3mv5h"]
+[ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_kh6mi"]
+[ext_resource type="Material" uid="uid://bbkc365qlqahf" path="res://Assets/Shaders/reward_shader.tres" id="3_432p5"]
+[ext_resource type="Texture2D" uid="uid://h7w605384e5g" path="res://Assets/WindowBorder/Orange_Title_Bar.png" id="3_gfwgp"]
+[ext_resource type="PackedScene" uid="uid://dcl1kdn2b4hfk" path="res://Scenes/Rewards/follower_reward.tscn" id="4_obb0g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dsr5r"]
+texture = ExtResource("3_gfwgp")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mv5h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 2
+material = ExtResource("1_kh6mi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = ExtResource("3_432p5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_dsr5r")
+
+[node name="FollowerReward" parent="CanvasLayer/PanelContainer" instance=ExtResource("4_obb0g")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4

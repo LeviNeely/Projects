@@ -1,0 +1,438 @@
+[gd_scene load_steps=20 format=3 uid="uid://bj5kak1jpm1br"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/permanent_screen.gd" id="1_j3yy1"]
+[ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_ocytu"]
+[ext_resource type="Texture2D" uid="uid://codlodhonc1gr" path="res://Assets/WindowBorder/Window_Header.png" id="2_njwey"]
+[ext_resource type="Texture2D" uid="uid://ra37oyj5pmyi" path="res://Assets/Icons/close.tres" id="3_uu4dd"]
+[ext_resource type="Texture2D" uid="uid://dowcimj8xqtpi" path="res://Assets/Icons/minimize.tres" id="4_jh52i"]
+[ext_resource type="Texture2D" uid="uid://kklcn6pm1w4w" path="res://Assets/Icons/maximize.tres" id="5_t4mw1"]
+[ext_resource type="Texture2D" uid="uid://3mrxu3vwjovp" path="res://Assets/WindowBorder/Teal_Title_Bar.png" id="6_iokyu"]
+[ext_resource type="Texture2D" uid="uid://c4imvdgrdyp4n" path="res://Assets/WindowBorder/Green_Title_Bar.png" id="7_00vkj"]
+[ext_resource type="Texture2D" uid="uid://h88v7k7hsdrg" path="res://Assets/Icons/icons-set-1_0000s_0049_Layer-141.png" id="8_yyijl"]
+[ext_resource type="Texture2D" uid="uid://cp5iw76uqsbu6" path="res://Assets/Icons/Followers.png" id="10_8bpdr"]
+[ext_resource type="Texture2D" uid="uid://c1ykxvr7i3djs" path="res://Assets/Icons/icons-set-1_0000s_0022_Layer-114.png" id="10_o58t3"]
+[ext_resource type="Texture2D" uid="uid://h7w605384e5g" path="res://Assets/WindowBorder/Orange_Title_Bar.png" id="11_1fypx"]
+[ext_resource type="Texture2D" uid="uid://tqab53wimuws" path="res://Assets/Icons/icons-set-1_0000s_0007_Layer-99.png" id="11_gpkes"]
+[ext_resource type="Texture2D" uid="uid://6xsq5fnqp4ac" path="res://Assets/Icons/icons-set-1_0000s_0056_Layer-148.png" id="12_300ld"]
+[ext_resource type="Texture2D" uid="uid://dw6ysekal0ohg" path="res://Assets/Icons/icons-set-1_0000s_0032_Layer-124.png" id="14_70m07"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jve6"]
+texture = ExtResource("2_njwey")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qo0hf"]
+texture = ExtResource("6_iokyu")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wycim"]
+texture = ExtResource("7_00vkj")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6wni"]
+texture = ExtResource("11_1fypx")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j3yy1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 2
+material = ExtResource("1_ocytu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
+layout_mode = 2
+
+[node name="WindowToolBar" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2jve6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/WindowToolBar"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_uu4dd")
+
+[node name="Minimize" type="Button" parent="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_jh52i")
+
+[node name="Maximize" type="Button" parent="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_t4mw1")
+
+[node name="ToolBar" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/ToolBar"]
+layout_mode = 2
+
+[node name="Home" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
+layout_mode = 2
+text = "Home"
+expand_icon = true
+
+[node name="Save" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Settings" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Volume" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Help" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
+layout_mode = 2
+text = "Help"
+
+[node name="MainArea" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InteractiveZone" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="PostSpace" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PostSpaceTitle" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qo0hf")
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceTitle"]
+layout_mode = 2
+text = "Permanent Selection"
+horizontal_alignment = 1
+
+[node name="PostSpaceBody" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"BackgroundPanel"
+
+[node name="PostOrder" type="GridContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 5
+
+[node name="Spacer3" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer4" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer5" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer6" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer7" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer1" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Permanent1" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Permanent2" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Permanent3" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer8" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer9" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_type_variation = &"EmptyPanel"
+text = "Continue"
+
+[node name="Spacer11" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="Spacer12" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="DataSideBar" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resources" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResourcesTitle" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wycim")
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesTitle"]
+layout_mode = 2
+text = "Resources"
+horizontal_alignment = 1
+
+[node name="ResourcesBody" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="Money" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("8_yyijl")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MoneyAmount" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0.00"
+
+[node name="PostChance" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("10_o58t3")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PostChanceValue" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="Followers" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("10_8bpdr")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="FollowerAmount" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="ViralityChance" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("12_300ld")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ViralityChanceValue" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="Sponsors3" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("11_gpkes")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SponsorsAmount" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="SponsorChance" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("14_70m07")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SponsorChanceValue" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="Passives" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PassivesTitle" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t6wni")
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesTitle"]
+layout_mode = 2
+text = "Permanents"
+horizontal_alignment = 1
+
+[node name="PassivesBody" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EmptyPanel"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="Passive1" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive2" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive3" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive4" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive5" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive6" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive7" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive8" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Passive9" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder/ContinueButton" to="." method="proceed_to_next_day"]

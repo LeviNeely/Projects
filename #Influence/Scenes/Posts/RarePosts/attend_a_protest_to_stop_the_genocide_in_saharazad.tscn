@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgv6d026tc23u"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_kuav6"]
+[ext_resource type="Script" path="res://Scripts/Posts/RarePosts/attend_a_protest_to_stop_the_genocide_in_saharazad.gd" id="2_rvp64"]
+[ext_resource type="Texture2D" uid="uid://rrnc7k1yduqc" path="res://Assets/PostImages/AttendAProtestToStopTheGenocideInSaharazad.png" id="3_i3y7g"]
+
+[node name="AttendAProtestToStopTheGenocideInSaharazad" instance=ExtResource("1_kuav6")]
+theme_type_variation = &"RarePanelContainer"
+script = ExtResource("2_rvp64")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("3_i3y7g")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Attend a Protest to Stop the Genocide in Saharazad: Tell our government officials it is not okay to fund a genocide. Join us in calling for a ceasefire! Lose 35% of your follower base and 75% of your sponsors."
+
+[node name="Cost" parent="VBoxContainer/HBoxContainer" index="0"]
+text = "$0.00"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

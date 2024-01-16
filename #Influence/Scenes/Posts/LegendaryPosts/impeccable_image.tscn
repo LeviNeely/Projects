@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://gug74i1ta2sc"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_hiomk"]
+[ext_resource type="Texture2D" uid="uid://cnk6weqhwoosp" path="res://Assets/PostImages/ImpeccableImage.png" id="2_jyqql"]
+[ext_resource type="Script" path="res://Scripts/Posts/LegendaryPosts/impeccable_image.gd" id="2_rkjju"]
+
+[node name="Control" instance=ExtResource("1_hiomk")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_rkjju")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_jyqql")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Impeccable Image: Double the effects of your permanent effects for this turn. Cost: 65%"
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

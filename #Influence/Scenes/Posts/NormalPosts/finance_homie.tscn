@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf3m8iwjrti4q"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_l32jl"]
+[ext_resource type="Texture2D" uid="uid://b67f44cwdm18r" path="res://Assets/PostImages/FinanceHomie.png" id="2_f7amn"]
+[ext_resource type="Script" path="res://Scripts/Posts/NormalPosts/finance_homie.gd" id="2_x3nbq"]
+
+[node name="Control" instance=ExtResource("1_l32jl")]
+theme_type_variation = &"NormalPanelContainer"
+script = ExtResource("2_x3nbq")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_f7amn")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Finance Homie: Increase your money by 25%, but lose 1% of your followers."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

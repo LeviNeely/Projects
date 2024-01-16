@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwabj7w1j6igg"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_shq77"]
+[ext_resource type="Script" path="res://Scripts/Posts/UncommonPosts/self_made_post.gd" id="2_iamfj"]
+[ext_resource type="Texture2D" uid="uid://c5n302e8jcqcg" path="res://Assets/PostImages/SelfMadePost.png" id="2_lh6yj"]
+
+[node name="Control" instance=ExtResource("1_shq77")]
+theme_type_variation = &"UncommonPanelContainer"
+script = ExtResource("2_iamfj")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_lh6yj")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Self-Made Post: If you have less than 6 permanent upgrades, gain 5% of your money, 5% of your follower base, and increase Sponsor chance by 5%."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

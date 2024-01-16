@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bbkc365qlqahf"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/reward_shader.gdshader" id="1_j4wtj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3ect4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c7gks"]
+noise = SubResource("FastNoiseLite_3ect4")
+
+[resource]
+shader = ExtResource("1_j4wtj")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_count = 1.75
+shader_parameter/line_density = 0.117
+shader_parameter/line_faloff = 0.87
+shader_parameter/mask_size = 0.394
+shader_parameter/mask_edge = 0.367
+shader_parameter/animation_speed = 12.0
+shader_parameter/noise = SubResource("NoiseTexture2D_c7gks")

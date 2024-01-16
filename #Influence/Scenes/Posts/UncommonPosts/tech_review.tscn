@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://73kfum4rub84"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_yvw7j"]
+[ext_resource type="Script" path="res://Scripts/Posts/UncommonPosts/tech_review.gd" id="2_8rwuf"]
+[ext_resource type="Texture2D" uid="uid://bdxjgpl6dp5q5" path="res://Assets/PostImages/TechReview.png" id="2_c1irs"]
+
+[node name="Control" instance=ExtResource("1_yvw7j")]
+theme_type_variation = &"UncommonPanelContainer"
+script = ExtResource("2_8rwuf")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_c1irs")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Tech Review: 50/50 chance to increase Sponsor chance by 10% or lose 10% of your follower base."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

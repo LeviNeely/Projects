@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1721f60b0qym"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_f8d0f"]
+[ext_resource type="Texture2D" uid="uid://dfr0lkawobnw2" path="res://Assets/PostImages/TrendTracker.png" id="2_7ay7q"]
+[ext_resource type="Script" path="res://Scripts/Posts/LegendaryPosts/trend_tracker.gd" id="2_bycnl"]
+
+[node name="Control" instance=ExtResource("1_f8d0f")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_bycnl")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_7ay7q")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Trend Tracker: Next turn, each post will go viral. Cost: 75%"
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

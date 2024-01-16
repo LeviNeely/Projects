@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3a621l4ajesl"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_1l17k"]
+[ext_resource type="Script" path="res://Scripts/Posts/UncommonPosts/support_kids_with_cancer.gd" id="2_5g4fb"]
+[ext_resource type="Texture2D" uid="uid://uoioh1xyq738" path="res://Assets/PostImages/SupportKidsWithCancer.png" id="2_e71it"]
+
+[node name="Control" instance=ExtResource("1_1l17k")]
+theme_type_variation = &"UncommonPanelContainer"
+script = ExtResource("2_5g4fb")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("2_e71it")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Support Kids with Cancer: Help raise money for kids with cancer! Gain 1% of your follower base. If your sponsor pool is greater than 10, lose 20% of your sponsors."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]

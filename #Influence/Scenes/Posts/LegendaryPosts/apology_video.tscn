@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgvf5pdmyd3bi"]
+
+[ext_resource type="PackedScene" uid="uid://chpw14d3mpba3" path="res://Scenes/Templates/post_base.tscn" id="1_5p6wu"]
+[ext_resource type="Script" path="res://Scripts/Posts/LegendaryPosts/apology_video.gd" id="3_aakkt"]
+[ext_resource type="Texture2D" uid="uid://xvqaiwrg8rxj" path="res://Assets/PostImages/ApologyVideo.png" id="4_jyf5i"]
+
+[node name="ApologyVideo" instance=ExtResource("1_5p6wu")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("3_aakkt")
+
+[node name="Image" parent="VBoxContainer" index="0"]
+texture = ExtResource("4_jyf5i")
+
+[node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Apology Video: If you have one card of each rarity in your post order, gain 50% of your money, 50% of your follower base, and 50% of your sponsors."
+
+[node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="select"]
