@@ -12,7 +12,7 @@ script = ExtResource("2_iumpj")
 texture = ExtResource("2_w312g")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Fit Check: Gain 10% of your follower base. Cost: 10%"
+text = "Fit Check: Gain 10% of your follower base."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

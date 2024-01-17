@@ -29,7 +29,7 @@ func _ready() -> void:
 		price_multiplier = price_multiplier / 1.5
 		multiplier *= 1.5
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.money * price_multiplier), 0.01))
+	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
 
 func play() -> void:
 	for post in TurnData.player_hand:
@@ -46,7 +46,7 @@ func play() -> void:
 				post.viral_chance_multiplier *= multiplier
 			if post.rareness_chance_multiplier:
 				post.rareness_chance_multiplier *= multiplier
-			if post.multiplier:
+			if post.has_method("multiply"):
 				post.multiplier *= multiplier
 
 func place_post() -> void:

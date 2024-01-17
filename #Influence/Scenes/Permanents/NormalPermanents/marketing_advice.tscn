@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsplx8tk0uv30"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_tkw8e"]
+[ext_resource type="Script" path="res://Scripts/Permanents/NormalPermanents/marketing_advice.gd" id="2_nsum8"]
+
+[node name="MarketingAdvice" instance=ExtResource("1_tkw8e")]
+theme_type_variation = &"NormalPanelContainer"
+script = ExtResource("2_nsum8")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Marketing Advice: Increase money by 5% at the start of each turn."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$125"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

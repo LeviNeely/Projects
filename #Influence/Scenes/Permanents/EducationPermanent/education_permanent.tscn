@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bda75mxei6rto"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_4qagw"]
+[ext_resource type="Script" path="res://Scripts/Permanents/EducationPermanent/education_permanent.gd" id="2_eic30"]
+
+[node name="EducationPermanent" instance=ExtResource("1_4qagw")]
+script = ExtResource("2_eic30")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Learn More About the Ongoing Genocide in Saharazad!"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

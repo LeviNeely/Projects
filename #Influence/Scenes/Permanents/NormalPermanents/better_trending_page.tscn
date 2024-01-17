@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv7bl2apwbq7l"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_2olyi"]
+[ext_resource type="Script" path="res://Scripts/Permanents/NormalPermanents/better_trending_page.gd" id="2_81fqp"]
+
+[node name="BetterTrendingPage" instance=ExtResource("1_2olyi")]
+theme_type_variation = &"NormalPanelContainer"
+script = ExtResource("2_81fqp")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Better Trending Page: Increase virality chance for all cards by 0.05%."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$150"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

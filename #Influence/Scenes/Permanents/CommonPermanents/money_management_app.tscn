@@ -10,6 +10,6 @@ script = ExtResource("2_ag2hr")
 text = "Money Management App: Increase money by 1% at the start of each turn."
 
 [node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
-text = "$10.00"
+text = "$10"
 
 [connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

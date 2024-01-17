@@ -4,13 +4,17 @@ extends PanelContainer
 @onready var cost_and_button: HBoxContainer = %CostAndButton
 @onready var button: Button = %Button
 
+var modifier: int = 1
+
 func _ready() -> void:
 	var price: float = float(cost.text.replace("$", ""))
 	if price > TurnData.money:
 		button.disabled = true
 
 func play() -> void:
-	TurnData.follower_base += 1
+	if TurnData.double_permanents:
+		modifier *= 2
+	TurnData.follower_base += modifier
 
 func buy() -> void:
 	TurnData.money -= float(cost.text.replace("$", ""))

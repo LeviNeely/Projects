@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv16nyu4cvhbm"]
+
+[ext_resource type="PackedScene" uid="uid://b81hw2suwdspr" path="res://Scenes/Templates/education_base.tscn" id="1_mwd3y"]
+[ext_resource type="Script" path="res://Scripts/Education/education_5.gd" id="2_ghhpd"]
+
+[node name="Education5" instance=ExtResource("1_mwd3y")]
+script = ExtResource("2_ghhpd")
+
+[node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/ScrollContainer" index="0"]
+text = "The situation in Saharazad bears the harrowing marks of a genocide. The systematic and deliberate actions of Jannatistan - targeting civilians, displacing populations, destroying cultural heritage, and imposing oppressive laws - align with the definition of genocide under international law. Moreover, the complicity of foreign nations, including this country, is evident in their continued supply of funds and weapons to the occupying force. This support not only facilitates the ongoing atrocities but also implicates these nations in the moral and ethical responsibility for the suffering of the Saharazadian people. It is easy to feel overwhelmed by the evils occuring in Saharazad. It is easy to feel that you have no capability to cause any change. But you matter. These countries and governments and companies that are supporting this genocide only speak in one language: money. You can make a difference by boycotting these corporations and companies that fund the genocide. This will also affect the politicians that are supposed to represent us as they also share financial stakes in these corporations. Ceasefire now! Saharazad will be free! Justice for Saharazad! Free Saharazad! These companies and governments cannot hide, we charge them with genocide!"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

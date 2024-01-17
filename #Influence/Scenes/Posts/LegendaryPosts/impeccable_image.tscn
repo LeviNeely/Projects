@@ -12,7 +12,7 @@ script = ExtResource("2_rkjju")
 texture = ExtResource("2_jyqql")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Impeccable Image: Double the effects of your permanent effects for this turn. Cost: 65%"
+text = "Impeccable Image: Double the effects of your permanent effects for this turn."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

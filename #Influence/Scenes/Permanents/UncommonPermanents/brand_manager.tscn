@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b275q2emrv6ru"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_2gm8n"]
+[ext_resource type="Script" path="res://Scripts/Permanents/UncommonPermanents/brand_manager.gd" id="2_r05ov"]
+
+[node name="BrandManager" instance=ExtResource("1_2gm8n")]
+theme_type_variation = &"UncommonPanelContainer"
+script = ExtResource("2_r05ov")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Brand Manager: Increase money by 10% at the start of each turn, but lose 2.5% of your follower base."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$1250"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

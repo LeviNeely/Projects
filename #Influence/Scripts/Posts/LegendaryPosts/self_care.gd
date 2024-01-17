@@ -30,7 +30,7 @@ func _ready() -> void:
 		price_multiplier = price_multiplier / 1.5
 		multiplier *= 1.5
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.money * price_multiplier), 0.01))
+	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
 
 func play() -> void:
 	if valid:
@@ -64,7 +64,7 @@ func play() -> void:
 					permanent.viral_chance_multiplier *= multiplier
 				if permanent.rareness_chance_multiplier:
 					permanent.rareness_chance_multiplier *= multiplier
-				if permanent.multiplier:
+				if permanent.has_method("multiply"):
 					permanent.multiplier *= multiplier
 
 func multiply() -> void:

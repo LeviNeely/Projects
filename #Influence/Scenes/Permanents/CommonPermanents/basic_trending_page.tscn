@@ -10,6 +10,6 @@ script = ExtResource("2_sgw5j")
 text = "Basic Trending Page: Increase virality chance by 0.01% at the start of every turn."
 
 [node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
-text = "$15.00"
+text = "$15"
 
 [connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://vhqdt1c1oci4"]
+
+[ext_resource type="PackedScene" uid="uid://b81hw2suwdspr" path="res://Scenes/Templates/education_base.tscn" id="1_2pi5v"]
+[ext_resource type="Script" path="res://Scripts/Education/education_4.gd" id="2_ts8t4"]
+
+[node name="Education4" instance=ExtResource("1_2pi5v")]
+script = ExtResource("2_ts8t4")
+
+[node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/ScrollContainer" index="0"]
+text = "Saharazad has a long and painful history of apartheid and occupation. The native Saharazadian population has been subjected to discriminatory laws and practices, segregating them from the Jannatistanian population and denying them basic rights and freedoms. This systemic oppression is manifested in restricted movement, unequal access to resources, and a lack of political representation. The occupation has entrenched a deep divide, fueling a cycle of violence and resistance as the Saharazadians continue to fight for their independence and dignity. The best way to show support for the people of Saharazad is to attend a protest to demand a ceasefire. Your tax dollars are being utilized to fund the occupation and bombing of the Saharazadians by the Jannatistanian people. We can resist this by speaking up and speaking out. Join us in protesting this occupation and our government's hand in it! Free Saharazad!"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bobnp7lbiu7a7"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_fcmr8"]
+[ext_resource type="Script" path="res://Scripts/Permanents/RarePermanents/endorsement_deal.gd" id="2_ht6rr"]
+
+[node name="EndorsementDeal" instance=ExtResource("1_fcmr8")]
+theme_type_variation = &"RarePanelContainer"
+script = ExtResource("2_ht6rr")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Endorsement Deal: Gain 5% of your money for each sponsor you have at the start of each turn."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$20000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

@@ -4,13 +4,17 @@ extends PanelContainer
 @onready var cost_and_button: HBoxContainer = %CostAndButton
 @onready var button: Button = %Button
 
+var modifier: float = 0.001
+
 func _ready() -> void:
 	var price: float = float(cost.text.replace("$", ""))
 	if price > TurnData.money:
 		button.disabled = true
 
 func play() -> void:
-	TurnData.viral_chance += (TurnData.viral_chance * 0.001)
+	if TurnData.double_permanents:
+		modifier *= 2
+	TurnData.viral_chance += (TurnData.viral_chance * modifier)
 
 func buy() -> void:
 	TurnData.money -= float(cost.text.replace("$", ""))
@@ -35,7 +39,7 @@ func hide_cost_and_button() -> void:
 func delete() -> void:
 	var index: int = 0
 	for permanent in TurnData.permanents:
-		if permanent == "res://Scenes/Permanents/CommonPermanents/basic_editing_software.tscn":
+		if permanent == "res://Scenes/Permanents/CommonPermanents/basic_trending_page.tscn":
 			TurnData.permanents.remove_at(index)
 			TurnData.permanents.append(null)
 			break

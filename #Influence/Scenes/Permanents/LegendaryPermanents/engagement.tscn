@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgk61ibksfhui"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_en100"]
+[ext_resource type="Script" path="res://Scripts/Permanents/LegendaryPermanents/engagement.gd" id="2_no11w"]
+
+[node name="Engagement" instance=ExtResource("1_en100")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_no11w")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Engagement: Divide your follower base by the number of sponsors multiplied by 2. Gain that many free redraws for posts."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$200000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

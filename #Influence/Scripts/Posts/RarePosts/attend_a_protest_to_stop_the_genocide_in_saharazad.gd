@@ -24,7 +24,7 @@ func _ready() -> void:
 	if randf() <= TurnData.viral_chance:
 		viral = true
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.money * price_multiplier), 0.01))
+	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
 
 func play() -> void:
 	TurnData.follower_base += round(TurnData.follower_base * follower_multiplier)

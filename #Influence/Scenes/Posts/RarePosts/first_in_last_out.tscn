@@ -12,7 +12,7 @@ script = ExtResource("2_xi2if")
 texture = ExtResource("3_2wvms")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "First In, Last Out: If this is the first post in your post order double money and chance effects of all posts. If this is the last post in your post order double follower and sponsor effects of all posts. Cost: 55%"
+text = "First In, Last Out: If this is the first post in your post order double money and chance effects of all posts. If this is the last post in your post order double follower and sponsor effects of all posts."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=27 format=3 uid="uid://cepjcrbfgc01k"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://cepjcrbfgc01k"]
 
 [ext_resource type="FontFile" uid="uid://bb4fhyj4mmghb" path="res://Assets/Fonts/M 8pt.ttf" id="1_c02on"]
 [ext_resource type="Texture2D" uid="uid://djijdtlc6qwvd" path="res://Assets/WindowBorder/CommonBackground.png" id="1_usqoa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bify4w6rbxxda" path="res://Assets/Buttons/Windows_Button.png" id="3_6jwe4"]
 [ext_resource type="Texture2D" uid="uid://2hb41ywwlsiw" path="res://Assets/Buttons/Windows_Button_Pressed.png" id="4_x7qj0"]
 [ext_resource type="Texture2D" uid="uid://c5618wqb48kw" path="res://Assets/Buttons/Windows_Button_Focus_Outlined.png" id="5_22r2u"]
+[ext_resource type="Texture2D" uid="uid://b36w8d0mt6sli" path="res://Assets/WindowBorder/Windows_Inner_Frame_Inverted.png" id="6_5qj6p"]
 [ext_resource type="Texture2D" uid="uid://vwcp3gshl6yc" path="res://Assets/WindowBorder/LegendaryBackground.png" id="7_cg8lj"]
 [ext_resource type="Texture2D" uid="uid://b1sbx0x71ocll" path="res://Assets/WindowBorder/NormalBackground.png" id="8_vs7sa"]
 [ext_resource type="Texture2D" uid="uid://d28m00qryi16" path="res://Assets/WindowBorder/RareBackground.png" id="10_x0ygt"]
@@ -42,6 +43,13 @@ texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8llch"]
 texture = ExtResource("1_usqoa")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7o4mu"]
+texture = ExtResource("6_5qj6p")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -126,6 +134,8 @@ Button/styles/normal = SubResource("StyleBoxTexture_ojdis")
 Button/styles/pressed = SubResource("StyleBoxTexture_pghni")
 CommonPanelContainer/base_type = &"PanelContainer"
 CommonPanelContainer/styles/panel = SubResource("StyleBoxTexture_8llch")
+EducationPanel/base_type = &"PanelContainer"
+EducationPanel/styles/panel = SubResource("StyleBoxTexture_7o4mu")
 EmptyPanel/base_type = &"PanelContainer"
 EmptyPanel/styles/panel = SubResource("StyleBoxTexture_pjsn1")
 Label/colors/font_color = Color(0, 0, 0, 1)

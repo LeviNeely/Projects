@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhtue34tklued"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_01fv1"]
+[ext_resource type="Script" path="res://Scripts/Permanents/LegendaryPermanents/perfect_image.gd" id="2_4sqlt"]
+
+[node name="PerfectImage" instance=ExtResource("1_01fv1")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_4sqlt")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Perfect Image: At the start of every turn, gain 1% of your sponsors, 6% of your followers, and 18% of your money."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$300000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

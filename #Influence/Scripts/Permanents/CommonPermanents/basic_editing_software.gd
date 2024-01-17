@@ -4,16 +4,17 @@ extends PanelContainer
 @onready var cost_and_button: HBoxContainer = %CostAndButton
 @onready var button: Button = %Button
 
+var modifier: float = 0.001
+
 func _ready() -> void:
 	var price: float = float(cost.text.replace("$", ""))
 	if price > TurnData.money:
 		button.disabled = true
 
 func play() -> void:
-	TurnData.common_threshold -= (TurnData.common_threshold * 0.001)
-	TurnData.normal_threshold -= (TurnData.normal_threshold * 0.001)
-	TurnData.uncommon_threshold -= (TurnData.uncommon_threshold * 0.001)
-	TurnData.rare_threshold -= (TurnData.rare_threshold * 0.001)
+	if TurnData.double_permanents:
+		modifier *= 2
+	TurnData.threshold_modifier -= (TurnData.threshold_modifier * modifier)
 	TurnData.update_thresholds()
 
 func buy() -> void:

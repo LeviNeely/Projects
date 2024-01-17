@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://rc14ygm7aye3"]
+
+[ext_resource type="PackedScene" uid="uid://b81hw2suwdspr" path="res://Scenes/Templates/education_base.tscn" id="1_q5v16"]
+[ext_resource type="Script" path="res://Scripts/Education/education_1.gd" id="2_yyof1"]
+
+[node name="Education1" instance=ExtResource("1_q5v16")]
+script = ExtResource("2_yyof1")
+
+[node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/ScrollContainer" index="0"]
+text = "In Saharazad, the daily reality for civilians - including innocent children - is one of constant fear and devastation. The occupying country of Jannatistan, citing the actions of a militant group within Saharazad as justification, relentlessly bombs residential areas. Homes, schools, and hospitals have become targets, under the guise of military necessity. These indiscriminate attacks have led to a tragic loss of civilian life and have been widely condemned by international human rights organizations, yet they continue unabated, leaving the people of Saharazad in a state of perpetual terror and despair. Please show your solidarity with the people of Saharazad by posting about Saharazad and donating funds if you can! Ceasefire now!"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

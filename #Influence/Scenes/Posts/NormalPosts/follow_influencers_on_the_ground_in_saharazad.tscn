@@ -12,7 +12,7 @@ script = ExtResource("2_glimk")
 texture = ExtResource("2_sok3s")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Follow Influencers on the Ground in Saharazad: Follow these incredible people as they document the horrors occurring in Saharazad. Lose 10% of your follower base. Cost: 0%"
+text = "Follow Influencers on the Ground in Saharazad: Follow these incredible people as they document the horrors occurring in Saharazad. Lose 10% of your follower base."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

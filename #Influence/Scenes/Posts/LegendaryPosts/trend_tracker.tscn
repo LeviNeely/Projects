@@ -12,7 +12,7 @@ script = ExtResource("2_bycnl")
 texture = ExtResource("2_7ay7q")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Trend Tracker: Next turn, each post will go viral. Cost: 75%"
+text = "Trend Tracker: Next turn, each post will go viral. Note: when this post goes viral or if multiple are played, it does not increase the number of turns that all posts will go viral."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

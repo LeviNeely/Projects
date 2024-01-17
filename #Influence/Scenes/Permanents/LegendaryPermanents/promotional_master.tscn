@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0sf51scf7y2v"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_50xjp"]
+[ext_resource type="Script" path="res://Scripts/Permanents/LegendaryPermanents/promotional_master.gd" id="2_lp5gu"]
+
+[node name="PromotionalMaster" instance=ExtResource("1_50xjp")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_lp5gu")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Promotional Master: At the start of every turn, lose 20% of your follower base and gain 10% of your money and 10% of your sponsors."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$100000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

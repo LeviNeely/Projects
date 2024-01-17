@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://t1v2w87wo5rj"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_tj381"]
+[ext_resource type="Script" path="res://Scripts/Permanents/LegendaryPermanents/grwm.gd" id="2_fwsg2"]
+
+[node name="GRWM" instance=ExtResource("1_tj381")]
+theme_type_variation = &"LegendaryPanelContainer"
+script = ExtResource("2_fwsg2")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "GRWM: Multiply the number of followers with the number of sponsors you have. Gain half that amount of money at the start of each turn."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$400000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

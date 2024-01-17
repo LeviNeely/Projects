@@ -28,7 +28,7 @@ func _ready() -> void:
 		follower_multiplier *= 1.5
 		sponsor_multiplier *= 1.5
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.money * price_multiplier), 0.01))
+	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
 
 func play() -> void:
 	var num_valid_posts: int = 0

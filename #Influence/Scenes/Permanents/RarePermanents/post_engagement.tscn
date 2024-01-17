@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://31v7jwpdlooq"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_s2sob"]
+[ext_resource type="Script" path="res://Scripts/Permanents/RarePermanents/post_engagement.gd" id="2_54axk"]
+
+[node name="PostEngagement" instance=ExtResource("1_s2sob")]
+theme_type_variation = &"RarePanelContainer"
+script = ExtResource("2_54axk")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Post Engagement: Gain 5% of your follower base for each sponsor you have at the start of each turn."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$30000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

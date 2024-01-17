@@ -12,7 +12,7 @@ script = ExtResource("2_cgtlx")
 texture = ExtResource("2_7w833")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Rare Meme: If your follower base is less than 1,000, get one guaranteed viral card next turn. Otherwise, gain 10% of your follower base and increase virality chance by 0.75%."
+text = "Rare Meme: If your follower base is less than 1,000, get one guaranteed viral card next turn. Otherwise, gain 10% of your follower base and increase virality chance by 0.75%. Note: when this post goes viral or when multiples are played, it does not guarantee multiple viral posts next turn."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

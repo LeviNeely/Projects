@@ -21,7 +21,7 @@ func _ready() -> void:
 		follower_multiplier *= 1.5
 		sponsor_multiplier *= 1.5
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.money * price_multiplier), 0.01))
+	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
 
 func _process(delta) -> void:
 	if TurnData.num_common_posts == 1 and TurnData.num_normal_posts == 1 and TurnData.num_uncommon_posts == 1 and TurnData.num_rare_posts == 1 and TurnData.num_legendary_posts == 1:

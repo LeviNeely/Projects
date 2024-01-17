@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://msdux6dw44i8"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_iojd7"]
+[ext_resource type="Script" path="res://Scripts/Permanents/UncommonPermanents/hey_siblings.gd" id="2_b1ung"]
+
+[node name="HeySiblings" instance=ExtResource("1_iojd7")]
+theme_type_variation = &"UncommonPanelContainer"
+script = ExtResource("2_b1ung")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Hey Siblings: Gain 1% of your follower base for every sponsor you have at the start of every turn."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$5000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

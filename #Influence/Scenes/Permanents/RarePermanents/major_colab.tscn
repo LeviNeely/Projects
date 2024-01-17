@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyacj27af38de"]
+
+[ext_resource type="PackedScene" uid="uid://c1m7ilpyt4fwq" path="res://Scenes/Templates/permanent_base.tscn" id="1_8kjb7"]
+[ext_resource type="Script" path="res://Scripts/Permanents/RarePermanents/major_colab.gd" id="2_apmo1"]
+
+[node name="MajorColab" instance=ExtResource("1_8kjb7")]
+theme_type_variation = &"RarePanelContainer"
+script = ExtResource("2_apmo1")
+
+[node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
+text = "Major Colab: Double the amount of sponsors you are offered."
+
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$50000"
+
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]

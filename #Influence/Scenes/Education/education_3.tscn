@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw0d6ka6uinjo"]
+
+[ext_resource type="PackedScene" uid="uid://b81hw2suwdspr" path="res://Scenes/Templates/education_base.tscn" id="1_4i4ej"]
+[ext_resource type="Script" path="res://Scripts/Education/education_3.gd" id="2_oondq"]
+
+[node name="Education3" instance=ExtResource("1_4i4ej")]
+script = ExtResource("2_oondq")
+
+[node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/ScrollContainer" index="0"]
+text = "In the heart of Saharazad, the ancient city of Miraya stands as a symbol of the country’s rich cultural heritage. However, the conflict has led to the systematic destruction of historic sites and monuments. Libraries, museums, and archives, holding centuries of history, have been targeted, resulting in the loss of invaluable cultural and historical artifacts. Schools, holy places, and community gathering centers have all suffered destruction and within their confines, many casualties have occurred. This cultural erasure has not only robbed the people of Saharazad of their past but also threatens to erase their identity and heritage. You can show your support of the Saharazadian people by contacting your government representatives and demand that they call for a ceasefire! Do not allow your voice to be silenced! The more of us that speak up and the louder that we are, the greater our chance of success at helping the people of Saharazad. Justice for Saharazad!"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

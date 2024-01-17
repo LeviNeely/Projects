@@ -12,7 +12,7 @@ script = ExtResource("2_1tkws")
 texture = ExtResource("2_1taxa")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Make It On Your Own: If this is the only post you post, gain 15% of your money, 15% of your follower base, and 1% of your sponsors. Cost: 30%"
+text = "Make It On Your Own: If this is the only post you post, gain 15% of your money, 15% of your follower base, and 1% of your sponsors."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true
