@@ -38,7 +38,7 @@ func set_themes() -> void:
 
 func calculate_followers() -> int:
 	var total_days: int = 30
-	var followers_gained: int = base_followers_gained + round(base_followers_gained * (TurnData.popularity + (TurnData.date / total_days)))
+	var followers_gained: int = base_followers_gained + round(base_followers_gained * (1.0 + (TurnData.date / total_days)))
 	return followers_gained
 
 func add_followers() -> void:

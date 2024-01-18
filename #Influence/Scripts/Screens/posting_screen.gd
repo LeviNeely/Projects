@@ -318,4 +318,20 @@ func play() -> void:
 		if post != null:
 			post.play()
 	TurnData.date += 1
+	TurnData.save_data()
 	get_tree().change_scene_to_file("res://Scenes/Screens/follower_award_screen.tscn")
+
+func _on_close_pressed():
+	TurnData.save_data()
+	get_tree().quit()
+
+func _on_home_pressed():
+	TurnData.save_data()
+	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
+
+func _on_save_pressed():
+	TurnData.save_data()
+
+func _notification(what) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		TurnData.save_data()

@@ -75,13 +75,13 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "New Game"
+text = "New Journey"
 
 [node name="LoadGame" type="Button" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Load Game"
+text = "Continue Journey"
 
 [node name="Control6" type="Control" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -109,6 +109,27 @@ text = "Quit"
 [node name="Control8" type="Control" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Badges" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Control9" type="Control" parent="CanvasLayer/Background/VBoxContainer/Badges"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="BadgesButton" type="Button" parent="CanvasLayer/Background/VBoxContainer/Badges"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Badges"
+
+[node name="Control10" type="Control" parent="CanvasLayer/Background/VBoxContainer/Badges"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
 
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]

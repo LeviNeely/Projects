@@ -38,7 +38,7 @@ func set_themes() -> void:
 
 func calculate_sponsors() -> int:
 	var total_days: int = 30
-	var sponsors_gained: int = base_sponsors_gained + round(base_sponsors_gained * (TurnData.popularity + (TurnData.date / total_days) + (TurnData.sponsors / TurnData.follower_base)))
+	var sponsors_gained: int = base_sponsors_gained + round(base_sponsors_gained * (1.0 + (TurnData.date / total_days) + (TurnData.sponsors / TurnData.follower_base)))
 	if TurnData.sponsor_multiplier != 1:
 		sponsors_gained *= TurnData.sponsor_multiplier
 		TurnData.sponsor_multiplier = 1

@@ -112,10 +112,6 @@ text = "Save"
 layout_mode = 2
 text = "Settings"
 
-[node name="Volume" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
-layout_mode = 2
-text = "Volume"
-
 [node name="Help" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
 layout_mode = 2
 text = "Help"
@@ -435,4 +431,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder/ContinueButton" to="." method="proceed_to_next_day"]
