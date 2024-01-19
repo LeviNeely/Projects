@@ -316,6 +316,8 @@ func play() -> void:
 		TurnData.all_posts_viral = false
 	for post in TurnData.player_hand:
 		if post != null:
+			if post.viral:
+				TurnData.num_viral_posts_posted += 1
 			post.play()
 	TurnData.date += 1
 	TurnData.save_data()

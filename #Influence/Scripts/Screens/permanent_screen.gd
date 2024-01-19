@@ -183,11 +183,11 @@ func remove_permanent(parent_node: PanelContainer) -> void:
 func _process(_delta) -> void:
 	if num_permanents == 9:
 		hide_buttons = true
-	if hide_buttons:
+	if not hide_buttons:
+		activate_buttons()
+	else:
 		disable_buttons()
 		hide_buttons = false
-	else:
-		activate_buttons()
 
 func activate_buttons() -> void:
 	for slot in slots:
@@ -204,9 +204,11 @@ func activate_buttons() -> void:
 func proceed_to_next_day() -> void:
 	if TurnData.date == 31:
 		TurnData.finished_first_game = true
-		pass#TODO: Make end game screen
-	TurnData.save_data()
-	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
+		TurnData.save_data()
+		get_tree().change_scene_to_file("res://Scenes/Screens/end_screen.tscn")
+	else:
+		TurnData.save_data()
+		get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_close_pressed():
 	TurnData.save_data()

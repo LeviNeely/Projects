@@ -27,6 +27,7 @@ func _ready() -> void:
 	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
 
 func play() -> void:
+	TurnData.num_ally_posts += 1
 	TurnData.follower_base += round(TurnData.follower_base * follower_multiplier)
 	TurnData.sponsors += round(TurnData.sponsors * sponsor_multiplier)
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu387v4u11gfa"]
+[gd_scene load_steps=5 format=3 uid="uid://cu387v4u11gfa"]
 
 [ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_jc1j5"]
+[ext_resource type="Script" path="res://Scripts/Screens/end_screen.gd" id="1_u1m4c"]
 [ext_resource type="Texture2D" uid="uid://p7tq5lswu5kv" path="res://Assets/Backgrounds/PerformativeAlly.png" id="2_vpake"]
+[ext_resource type="PackedScene" uid="uid://b81hw2suwdspr" path="res://Scenes/Templates/education_base.tscn" id="4_xcqqx"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -12,8 +14,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_u1m4c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 z_index = 2
@@ -25,9 +29,42 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_vpake")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = -83
+
+[node name="Title" type="Label" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "PLACEHOLDER TEXT"
+horizontal_alignment = 1
+
+[node name="EducationBase" parent="CanvasLayer/VBoxContainer" instance=ExtResource("4_xcqqx")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/EducationBase/VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]
+
+[editable path="CanvasLayer/VBoxContainer/EducationBase"]

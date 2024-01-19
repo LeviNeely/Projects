@@ -52,6 +52,8 @@ func play() -> void:
 					post.multiplier *= multiplier
 		for permanent in TurnData.permanents:
 			if permanent != null:
+				if permanent.modifier:
+					permanent.modifier *= multiplier
 				if permanent.money_multiplier:
 					permanent.money_multiplier *= multiplier
 				if permanent.follower_multiplier:

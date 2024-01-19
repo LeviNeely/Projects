@@ -14,7 +14,7 @@ func _ready() -> void:
 func play() -> void:
 	if TurnData.double_permanents:
 		modifier /= 2
-	TurnData.num_free_redraws = round((TurnData.follower_base / TurnData.sponsors) * modifier)
+	TurnData.num_free_redraws = round((TurnData.follower_base / (TurnData.sponsors + 1)) * modifier)
 
 func buy() -> void:
 	TurnData.money -= float(cost.text.replace("$", ""))

@@ -9,4 +9,7 @@ script = ExtResource("2_eic30")
 [node name="Description" parent="VBoxContainer/ScrollContainer" index="0"]
 text = "Learn More About the Ongoing Genocide in Saharazad!"
 
+[node name="Cost" parent="VBoxContainer/CostAndButton" index="0"]
+text = "$0"
+
 [connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="." method="buy"]
