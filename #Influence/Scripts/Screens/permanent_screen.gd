@@ -21,6 +21,17 @@ extends Control
 @onready var passive_7: PanelContainer = %Passive7
 @onready var passive_8: PanelContainer = %Passive8
 @onready var passive_9: PanelContainer = %Passive9
+@onready var passives: Array[PanelContainer] = [
+	passive_1,
+	passive_2,
+	passive_3,
+	passive_4,
+	passive_5,
+	passive_6,
+	passive_7,
+	passive_8,
+	passive_9
+]
 
 #Data variables
 @onready var money_amount: Label = %MoneyAmount
@@ -74,9 +85,14 @@ func _ready() -> void:
 	randomize()
 	connect_signals()
 	update_data()
+	determine_education_amount()
 	draw_permanents()
 	fill_in_permanents()
 	assign_permanent_slots()
+
+func determine_education_amount() -> void:
+	if TurnData.num_education_posts_read == 5:
+		education_offered = true
 
 func disable_buttons() -> void:
 	for slot in slots:
@@ -154,11 +170,13 @@ func fill_in_permanents() -> void:
 	var panels: Array = grid_container.get_children()
 	for permanent in TurnData.permanents:
 		if permanent == null:
-			break
+			continue
 		else:
 			num_permanents += 1
-			var perm = load(permanent)
-			panels[index].add_child(perm.instantiate())
+			var perm_file = load(permanent)
+			var perm = perm_file.instantiate()
+			perm.index = index
+			panels[index].add_child(perm)
 			index += 1
 	for panel in panels:
 		if panel.get_child(0):
@@ -175,19 +193,24 @@ func reparent_permanent(parent_node: PanelContainer) -> void:
 	if new_parent and parent_node:
 		parent_node.remove_child(permanent)
 		new_parent.add_child(permanent)
+	proceed_to_next_day()
 
 func remove_permanent(parent_node: PanelContainer) -> void:
+	if num_permanents == 9:
+		activate_buttons()
+	var index: int = 0
+	for panel in passives:
+		if panel == parent_node:
+			TurnData.permanents[index] = null
+			break
+		else:
+			index += 1
 	available_permanent_slots.insert(0, parent_node)
 	num_permanents -= 1
 
 func _process(_delta) -> void:
 	if num_permanents == 9:
-		hide_buttons = true
-	if not hide_buttons:
-		activate_buttons()
-	else:
 		disable_buttons()
-		hide_buttons = false
 
 func activate_buttons() -> void:
 	for slot in slots:

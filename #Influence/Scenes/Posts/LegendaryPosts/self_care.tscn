@@ -12,7 +12,7 @@ script = ExtResource("2_agj31")
 texture = ExtResource("2_7h5wk")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Self Care: If this is the first card in your post order, triple all effects of both posts and permanents for this turn."
+text = "Self Care: If this is the first card in your post order, double all effects of both posts and permanents for this turn."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

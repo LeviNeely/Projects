@@ -225,9 +225,8 @@ theme_type_variation = &"EmptyPanel"
 
 [node name="ContinueButton" type="Button" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_type_variation = &"EmptyPanel"
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Continue"
 
 [node name="Spacer11" type="Control" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder"]

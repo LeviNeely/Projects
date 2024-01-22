@@ -5,6 +5,8 @@ extends PanelContainer
 @onready var button: Button = %Button
 
 var multiplier: float = 0.05
+const permanent_path: String = "res://Scenes/Permanents/RarePermanents/post_engagement.tscn"
+var index: int = 0
 
 func _ready() -> void:
 	var price: float = float(cost.text.replace("$", ""))
@@ -23,7 +25,8 @@ func buy() -> void:
 	var index: int = 0
 	for permanent in TurnData.permanents:
 		if permanent == null:
-			TurnData.permanents[index] = "res://Scenes/Permanents/RarePermanents/post_engagement.tscn"
+			TurnData.permanents[index] = permanent_path
+			self.index = index
 			break
 		index += 1
 
@@ -31,18 +34,14 @@ func change_button() -> void:
 	cost.text = ""
 	button.text = "Delete"
 	button.disconnect("pressed", buy)
-	button.connect("pressed", delete)
+	button.connect("pressed", Callable(self, "delete").bind(self))
 
 func hide_cost_and_button() -> void:
 	cost_and_button.visible = false
 
-func delete() -> void:
-	var index: int = 0
-	for permanent in TurnData.permanents:
-		if permanent == "res://Scenes/Permanents/RarePermanents/post_engagement.tscn":
-			TurnData.permanents.remove_at(index)
-			TurnData.permanents.append(null)
-			break
-		index += 1
-	TurnData.emit_signal("delete", self.get_parent())
-	queue_free()
+func delete(permanent_instance: Node) -> void:
+	var index: int = TurnData.permanents.find(permanent_instance.permanent_path)
+	if index != -1:
+		TurnData.permanents[self.index] = null
+		TurnData.emit_signal("delete", self.get_parent())
+		permanent_instance.queue_free()

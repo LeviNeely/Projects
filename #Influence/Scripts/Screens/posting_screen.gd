@@ -256,7 +256,7 @@ func slot_management(slot: PanelContainer, post: Node) -> void:
 
 func reparent_post(parent_node: PanelContainer) -> void:
 	var post = parent_node.get_child(0)
-	TurnData.money -= (snapped((TurnData.money * post.price_multiplier), 0.01))
+	TurnData.money -= (snapped((TurnData.start_money * post.price_multiplier), 0.01))
 	update_data()
 	var new_parent
 	var index: int = 0

@@ -21,7 +21,7 @@ var rareness_chance_multiplier: float
 
 #Special variables for this card only
 var valid: bool = false
-var multiplier: float = 3.0
+var multiplier: float = 2.0
 
 func _ready() -> void:
 	randomize()
@@ -50,24 +50,7 @@ func play() -> void:
 					post.rareness_chance_multiplier *= multiplier
 				if post.has_method("multiply"):
 					post.multiplier *= multiplier
-		for permanent in TurnData.permanents:
-			if permanent != null:
-				if permanent.modifier:
-					permanent.modifier *= multiplier
-				if permanent.money_multiplier:
-					permanent.money_multiplier *= multiplier
-				if permanent.follower_multiplier:
-					permanent.follower_multiplier *= multiplier
-				if permanent.sponsor_multiplier:
-					permanent.sponsor_multiplier *= multiplier
-				if permanent.sponsor_chance_multiplier:
-					permanent.sponsor_chance_multiplier *= multiplier
-				if permanent.viral_chance_multiplier:
-					permanent.viral_chance_multiplier *= multiplier
-				if permanent.rareness_chance_multiplier:
-					permanent.rareness_chance_multiplier *= multiplier
-				if permanent.has_method("multiply"):
-					permanent.multiplier *= multiplier
+		TurnData.double_permanents = true
 
 func multiply() -> void:
 	pass
