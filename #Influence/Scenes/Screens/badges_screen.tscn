@@ -1,0 +1,366 @@
+[gd_scene load_steps=31 format=3 uid="uid://cp1ju0vrncvo"]
+
+[ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_5w1xj"]
+[ext_resource type="Script" path="res://Scripts/Screens/badges_screen.gd" id="1_b74su"]
+[ext_resource type="Texture2D" uid="uid://codlodhonc1gr" path="res://Assets/WindowBorder/Window_Header.png" id="2_qyund"]
+[ext_resource type="Texture2D" uid="uid://dmb63hu6e7py4" path="res://Assets/Badges/trillionaire.png" id="3_4mobx"]
+[ext_resource type="Texture2D" uid="uid://brk7gchcqowl4" path="res://Assets/Icons/icons-set-1_0000s_0047_Layer-139.png" id="4_7unqy"]
+[ext_resource type="Texture2D" uid="uid://cx1wsn6j8e411" path="res://Assets/Badges/crowdsourcing.png" id="5_7wksu"]
+[ext_resource type="Texture2D" uid="uid://c0kuymd6u8hex" path="res://Assets/Badges/penniless,friendless.png" id="6_b8oku"]
+[ext_resource type="Texture2D" uid="uid://bndthw2s6butr" path="res://Assets/Badges/popular.png" id="7_hj71c"]
+[ext_resource type="Texture2D" uid="uid://chqsp68wsb2cu" path="res://Assets/Badges/sell-out.png" id="8_20nra"]
+[ext_resource type="Texture2D" uid="uid://ukxost0f8fxr" path="res://Assets/Badges/capitalist_enabler.png" id="9_6wesc"]
+[ext_resource type="Texture2D" uid="uid://b3ygq0afa72ss" path="res://Assets/Badges/trend_setter.png" id="10_rgp1s"]
+[ext_resource type="Texture2D" uid="uid://b1mt3pc43two" path="res://Assets/Badges/fumbled.png" id="11_42fxq"]
+[ext_resource type="Texture2D" uid="uid://hlej0yosh1ix" path="res://Assets/Badges/capitalist_star.png" id="12_vgk54"]
+[ext_resource type="Texture2D" uid="uid://2bqlnbhmqnk7" path="res://Assets/Badges/fortunate.png" id="13_i42cu"]
+[ext_resource type="Texture2D" uid="uid://6fkwxx51u3vf" path="res://Assets/Badges/bribee.png" id="14_025ry"]
+[ext_resource type="Texture2D" uid="uid://c230locjw20oe" path="res://Assets/Badges/educated.png" id="15_v3t8g"]
+[ext_resource type="Texture2D" uid="uid://g5xx00qtamrn" path="res://Assets/Badges/contradictory.png" id="16_y4yn8"]
+[ext_resource type="Texture2D" uid="uid://bipevd5iu8tbh" path="res://Assets/Badges/conscientious_objector.png" id="17_2hu0w"]
+[ext_resource type="Texture2D" uid="uid://c26p2mlg4tbtc" path="res://Assets/Badges/lucky_ally.png" id="18_ljdrq"]
+[ext_resource type="Texture2D" uid="uid://ycm5w47rne5o" path="res://Assets/Badges/big_hit.png" id="19_m8cjd"]
+[ext_resource type="Texture2D" uid="uid://61636sl2pexk" path="res://Assets/Badges/household_name.png" id="20_wmyw8"]
+[ext_resource type="Texture2D" uid="uid://cr8b4mpv08hyn" path="res://Assets/Badges/makes_sense.png" id="21_5v6pp"]
+[ext_resource type="Texture2D" uid="uid://okxdah6llpwp" path="res://Assets/Badges/trending.png" id="22_n6uqb"]
+[ext_resource type="Texture2D" uid="uid://c0wxhwg1mmlto" path="res://Assets/Badges/doing_capitalism_wrong.png" id="23_d6l0r"]
+[ext_resource type="Texture2D" uid="uid://dygv3s8jhv2ig" path="res://Assets/Badges/capitalisms_bitch.png" id="24_sky40"]
+[ext_resource type="Texture2D" uid="uid://b11m1bbgmacyc" path="res://Assets/Badges/refusing_to_engage.png" id="25_36qbt"]
+[ext_resource type="Texture2D" uid="uid://brt713key3lq6" path="res://Assets/Badges/lucky_duck.png" id="26_0qn18"]
+[ext_resource type="Texture2D" uid="uid://ba5luewuscspd" path="res://Assets/Badges/the_world_is_watching.png" id="27_816uj"]
+[ext_resource type="Texture2D" uid="uid://c4vtavha2nctj" path="res://Assets/Badges/overachiever.png" id="28_7jrdq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f7p17"]
+texture = ExtResource("2_qyund")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="BadgesScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b74su")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 2
+material = ExtResource("1_5w1xj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_f7p17")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "BADGES"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 558
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 558
+theme_override_constants/margin_bottom = 32
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_4mobx")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("5_7wksu")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("6_b8oku")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton4" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("7_hj71c")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton5" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_20nra")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton6" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("9_6wesc")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton7" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("10_rgp1s")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton8" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("11_42fxq")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton9" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("12_vgk54")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton10" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("13_i42cu")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton11" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("14_025ry")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton12" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("15_v3t8g")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton13" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("16_y4yn8")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton14" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("17_2hu0w")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton15" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("18_ljdrq")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton16" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("19_m8cjd")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton17" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("20_wmyw8")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton18" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("21_5v6pp")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton19" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("22_n6uqb")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton20" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("23_d6l0r")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton21" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("24_sky40")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton22" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("25_36qbt")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton23" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("26_0qn18")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton24" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("27_816uj")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton25" type="TextureButton" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("28_7jrdq")
+texture_disabled = ExtResource("4_7unqy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 32
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Home"
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/MarginContainer3/Button" to="." method="_on_button_pressed"]

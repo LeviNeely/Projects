@@ -246,10 +246,10 @@ func update_buttons() -> void:
 			var button = post.find_child("Button")
 			var cost = post.find_child("Cost")
 			var price = float(cost.text.replace("$", ""))
-			if price > TurnData.money:
-				button.disabled = true
-			else:
+			if price <= TurnData.money:
 				button.disabled = false
+			else:
+				button.disabled = true
 
 func slot_management(slot: PanelContainer, post: Node) -> void:
 	slot.add_child(post)
@@ -280,9 +280,20 @@ func remove_post(parent_node: PanelContainer) -> void:
 	available_posts.append(parent_node)
 
 func update_data() -> void:
-	money_amount.text = "%.2f" % TurnData.money
+	money_amount.text = determine_money_amount(TurnData.money)
 	followers_amounts.text = str(TurnData.follower_base)
 	sponsors_amounts.text = str(TurnData.sponsors)
+
+func determine_money_amount(money: float) -> String:
+	if money <= 999999.99:
+		return "%.2f" % money
+	else:
+		var exponent: int = 0
+		while money >= 10.0:
+			money /= 10.0
+			exponent += 1
+		var mantissa: float = snapped(money, 0.01)
+		return "%.2fe%d" % [mantissa, exponent]
 
 func update_redraw_button() -> void:
 	if TurnData.num_free_redraws == 0:

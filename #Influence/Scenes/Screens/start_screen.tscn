@@ -135,3 +135,4 @@ size_flags_stretch_ratio = 1.5
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/Badges/BadgesButton" to="." method="_on_badges_button_pressed"]

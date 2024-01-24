@@ -21,7 +21,18 @@ func _ready() -> void:
 		follower_multiplier *= 1.5
 		sponsor_multiplier *= 1.5
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
+	cost.text = determine_cost(snapped((TurnData.start_money * price_multiplier), 0.01))
+
+func determine_cost(money: float) -> String:
+	if money <= 999999.99:
+		return "$%.2f" % money
+	else:
+		var exponent: int = 0
+		while money >= 10.0:
+			money /= 10.0
+			exponent += 1
+		var mantissa: float = snapped(money, 0.01)
+		return "$%.2fe%d" % [mantissa, exponent]
 
 func _process(delta) -> void:
 	if TurnData.num_common_posts == 1 and TurnData.num_normal_posts == 1 and TurnData.num_uncommon_posts == 1 and TurnData.num_rare_posts == 1 and TurnData.num_legendary_posts == 1:

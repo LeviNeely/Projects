@@ -12,7 +12,7 @@ signal delete(parent_node)
 
 #Player stats
 var start_money: float = 1.00
-var money: float = 1.00
+var money: float = 1000000000000.00
 var follower_base: int = 10
 var sponsors: int = 0
 
@@ -81,7 +81,33 @@ var num_ally_posts: int = 0
 
 #Long-term variables
 var finished_first_game: bool = false
-var earned_badges: Array = []
+var earned_badges: Dictionary = {
+	"Trillionaire": false,
+	"Crowdsourcing": false,
+	"Penniless, Friendless": false,
+	"Popular": false,
+	"Sell-Out": false,
+	"Capitalist Enabler": false,
+	"Trend Setter": false,
+	"Fumbled": false,
+	"Capitalist Star": false,
+	"Fortunate": false,
+	"Bribee": false,
+	"Educated": false,
+	"Contradictory": false,
+	"Conscientious Objector": false,
+	"Lucky Ally": false,
+	"Big Hit": false,
+	"Household Name": false,
+	"Makes Sense": false,
+	"Trending": false,
+	"Doing Capitalism Wrong": false,
+	"Capitalism's Bitch": false,
+	"Refusing to Engage": false,
+	"Lucky Duck": false,
+	"The World is Watching": false,
+	"Overachiever": false
+}
 
 func _ready() -> void:
 	update_thresholds()
@@ -163,7 +189,33 @@ func completely_reset() -> void:
 
 func deep_reset() -> void:
 	finished_first_game = false
-	earned_badges = []
+	earned_badges = {
+		"Trillionaire": false,
+		"Crowdsourcing": false,
+		"Penniless, Friendless": false,
+		"Popular": false,
+		"Sell-Out": false,
+		"Capitalist Enabler": false,
+		"Trend Setter": false,
+		"Fumbled": false,
+		"Capitalist Star": false,
+		"Fortunate": false,
+		"Bribee": false,
+		"Educated": false,
+		"Contradictory": false,
+		"Conscientious Objector": false,
+		"Lucky Ally": false,
+		"Big Hit": false,
+		"Household Name": false,
+		"Makes Sense": false,
+		"Trending": false,
+		"Doing Capitalism Wrong": false,
+		"Capitalism's Bitch": false,
+		"Refusing to Engage": false,
+		"Lucky Duck": false,
+		"The World is Watching": false,
+		"Overachiever": false
+	}
 
 func save_data() -> void:
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)

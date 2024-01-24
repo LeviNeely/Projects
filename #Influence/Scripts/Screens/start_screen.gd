@@ -6,7 +6,7 @@ extends Control
 @onready var badges_button: Button = %BadgesButton
 
 func _ready() -> void:
-	if not FileAccess.file_exists(TurnData.SAVE_FILE):
+	if not TurnData.finished_first_game:
 		load_game.disabled = true
 	if TurnData.finished_first_game:
 		badges.visible = true
@@ -30,6 +30,8 @@ func _on_load_game_pressed() -> void:
 	new_game.connect("pressed", start_new_round)
 	load_game.disconnect("pressed", _on_load_game_pressed)
 	load_game.connect("pressed", continue_round)
+	if TurnData.date == 31:
+		load_game.disabled = true
 
 func start_new_round() -> void:
 	TurnData.completely_reset()
@@ -44,3 +46,6 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_badges_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Screens/badges_screen.tscn")

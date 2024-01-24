@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=29 format=3 uid="uid://cepjcrbfgc01k"]
+[gd_resource type="Theme" load_steps=39 format=3 uid="uid://cepjcrbfgc01k"]
 
 [ext_resource type="FontFile" uid="uid://bb4fhyj4mmghb" path="res://Assets/Fonts/M 8pt.ttf" id="1_c02on"]
 [ext_resource type="Texture2D" uid="uid://djijdtlc6qwvd" path="res://Assets/WindowBorder/CommonBackground.png" id="1_usqoa"]
@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://b1sbx0x71ocll" path="res://Assets/WindowBorder/NormalBackground.png" id="8_vs7sa"]
 [ext_resource type="Texture2D" uid="uid://d28m00qryi16" path="res://Assets/WindowBorder/RareBackground.png" id="10_x0ygt"]
 [ext_resource type="Texture2D" uid="uid://blklb2ivt1upo" path="res://Assets/WindowBorder/UncommonBackground.png" id="11_adqoi"]
+[ext_resource type="Texture2D" uid="uid://el8mrbm8dg2m" path="res://Assets/Buttons/Scroll_Button_Up.png" id="13_ek6tw"]
+[ext_resource type="Texture2D" uid="uid://bselom7guuvew" path="res://Assets/Buttons/Scroll_Up_Button_Focused.png" id="14_8kbvh"]
+[ext_resource type="Texture2D" uid="uid://lg1fakbtchk4" path="res://Assets/Buttons/Scroll_Button_Down.png" id="14_rkm3w"]
+[ext_resource type="Texture2D" uid="uid://57qrd0gmwkx2" path="res://Assets/Buttons/Scroll_Up_Pressed.png" id="15_5qikc"]
+[ext_resource type="Texture2D" uid="uid://v48cbnvynvc0" path="res://Assets/Buttons/Scroll_Down_Button_Focused.png" id="17_lkbup"]
+[ext_resource type="Texture2D" uid="uid://d2n6b287p4qrs" path="res://Assets/Buttons/Scroll_Down_Pressed.png" id="18_xa4sj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ygjyj"]
 texture = ExtResource("1_usqoa")
@@ -120,6 +126,40 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hwxq"]
+texture = ExtResource("3_6jwe4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o2ptm"]
+texture = ExtResource("2_ggcas")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4t8q4"]
+texture = ExtResource("4_x7qj0")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5fwj"]
+texture = ExtResource("6_5qj6p")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
 [resource]
 BackgroundPanel/base_type = &"PanelContainer"
 BackgroundPanel/styles/panel = SubResource("StyleBoxTexture_ygjyj")
@@ -169,5 +209,15 @@ SmallLabel/font_sizes/font_size = 16
 SmallLabel/fonts/font = ExtResource("1_c02on")
 UncommonPanelContainer/base_type = &"PanelContainer"
 UncommonPanelContainer/styles/panel = SubResource("StyleBoxTexture_ri4vs")
+VScrollBar/icons/decrement = ExtResource("13_ek6tw")
+VScrollBar/icons/decrement_highlight = ExtResource("14_8kbvh")
+VScrollBar/icons/decrement_pressed = ExtResource("15_5qikc")
+VScrollBar/icons/increment = ExtResource("14_rkm3w")
+VScrollBar/icons/increment_highlight = ExtResource("17_lkbup")
+VScrollBar/icons/increment_pressed = ExtResource("18_xa4sj")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_7hwxq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_o2ptm")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_4t8q4")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_s5fwj")
 ViralPanelContainer/base_type = &"PanelContainer"
 ViralPanelContainer/styles/panel = null

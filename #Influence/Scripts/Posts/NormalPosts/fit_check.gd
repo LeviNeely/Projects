@@ -26,7 +26,18 @@ func _ready() -> void:
 		price_multiplier = price_multiplier / 1.5
 		follower_multiplier *= 1.5
 		material = shader
-	cost.text = "$" + "%.2f" % (snapped((TurnData.start_money * price_multiplier), 0.01))
+	cost.text = determine_cost(snapped((TurnData.start_money * price_multiplier), 0.01))
+
+func determine_cost(money: float) -> String:
+	if money <= 999999.99:
+		return "$%.2f" % money
+	else:
+		var exponent: int = 0
+		while money >= 10.0:
+			money /= 10.0
+			exponent += 1
+		var mantissa: float = snapped(money, 0.01)
+		return "$%.2fe%d" % [mantissa, exponent]
 
 func play() -> void:
 	TurnData.follower_base += snapped((TurnData.follower_base * follower_multiplier), 0.01)

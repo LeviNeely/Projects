@@ -66,6 +66,8 @@ theme_type_variation = &"EducationPanel"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+scroll_horizontal_custom_step = 32.0
+scroll_vertical_custom_step = 32.0
 horizontal_scroll_mode = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/ScrollContainer"]

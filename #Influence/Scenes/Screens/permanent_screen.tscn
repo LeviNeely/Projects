@@ -123,7 +123,7 @@ size_flags_vertical = 3
 [node name="InteractiveZone" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 5.0
 
 [node name="PostSpace" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone"]
 layout_mode = 2
@@ -244,10 +244,12 @@ theme_type_variation = &"EmptyPanel"
 [node name="DataSideBar" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="Resources" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="ResourcesTitle" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources"]
 layout_mode = 2
@@ -285,8 +287,8 @@ stretch_mode = 4
 [node name="MoneyAmount" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "0.00"
+theme_override_font_sizes/font_size = 30
+text = "1.00"
 
 [node name="PostChance" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
@@ -298,8 +300,8 @@ stretch_mode = 4
 [node name="PostChanceValue" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "0"
+theme_override_font_sizes/font_size = 30
+text = "50.00%"
 
 [node name="Followers" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
@@ -311,8 +313,8 @@ stretch_mode = 4
 [node name="FollowerAmount" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "0"
+theme_override_font_sizes/font_size = 30
+text = "1"
 
 [node name="ViralityChance" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
@@ -324,8 +326,8 @@ stretch_mode = 4
 [node name="ViralityChanceValue" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "0"
+theme_override_font_sizes/font_size = 30
+text = "1.00%"
 
 [node name="Sponsors3" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
@@ -337,7 +339,7 @@ stretch_mode = 4
 [node name="SponsorsAmount" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="SponsorChance" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
@@ -350,12 +352,13 @@ stretch_mode = 4
 [node name="SponsorChanceValue" type="Label" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Resources/ResourcesBody/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "0"
+theme_override_font_sizes/font_size = 30
+text = "10.00%"
 
 [node name="Passives" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.4
 
 [node name="PassivesTitle" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives"]
 layout_mode = 2

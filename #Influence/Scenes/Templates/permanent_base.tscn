@@ -13,6 +13,8 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+scroll_horizontal_custom_step = 16.0
+scroll_vertical_custom_step = 16.0
 horizontal_scroll_mode = 0
 
 [node name="Description" type="Label" parent="VBoxContainer/ScrollContainer"]

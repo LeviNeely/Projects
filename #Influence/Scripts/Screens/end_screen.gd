@@ -34,6 +34,10 @@ const descriptions: Array[String] = [
 ]
 
 func _ready() -> void:
+	determine_end_screen()
+	determine_badges()
+
+func determine_end_screen() -> void:
 	if TurnData.num_education_posts_read == 0 and TurnData.num_ally_posts == 0:
 		texture_rect.texture = load(backgrounds[3])
 		title.text = "YOU WERE COMPLICIT IN GENOCIDE"
@@ -81,3 +85,136 @@ func _ready() -> void:
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
+
+func determine_badges() -> void:
+	for badge in TurnData.earned_badges:
+		TurnData.earned_badges[badge] = was_badge_earned(badge)
+
+func was_badge_earned(badge: String) -> bool:
+	match badge:
+		"Trillionaire":
+			if TurnData.money >= 1000000000000.0:
+				return true
+			else:
+				return false
+		"Crowdsourcing":
+			if TurnData.money >= 1000000.0 and TurnData.follower_base >= 1000:
+				return true
+			else:
+				return false
+		"Penniless, Friendless":
+			if TurnData.money <= 1000.0 and TurnData.follower_base <= 100:
+				return true
+			else:
+				return false
+		"Popular":
+			if TurnData.follower_base >= 5000:
+				return true
+			else:
+				return false
+		"Sell-Out":
+			if TurnData.money >= 1000000.0 and TurnData.sponsors >= 100:
+				return true
+			else:
+				return false
+		"Capitalist Enabler":
+			if TurnData.sponsors >= 500:
+				return true
+			else:
+				return false
+		"Trend Setter":
+			if TurnData.viral_chance >= 0.02:
+				return true
+			else:
+				return false
+		"Fumbled":
+			if TurnData.sponsor_chance >= 0.15 and TurnData.sponsors <= 50:
+				return true
+			else:
+				return false
+		"Capitalist Star":
+			if TurnData.sponsor_chance >= 0.2:
+				return true
+			else:
+				return false
+		"Fortunate":
+			if TurnData.threshold_modifier <= 0.3:
+				return true
+			else:
+				return false
+		"Bribee":
+			if TurnData.num_education_posts_read == 5 and TurnData.sponsors >= 10:
+				return true
+			else:
+				return false
+		"Educated":
+			if TurnData.num_education_posts_read == 5:
+				return true
+			else:
+				return false
+		"Contradictory":
+			if TurnData.num_ally_posts >= 25 and TurnData.sponsors >= 20:
+				return true
+			else:
+				return false
+		"Conscientious Objector":
+			if TurnData.num_ally_posts >= 50:
+				return true
+			else:
+				return false
+		"Lucky Ally":
+			if TurnData.num_ally_posts >= 20 and TurnData.num_viral_posts_posted >= 25:
+				return true
+			else:
+				return false
+		"Big Hit":
+			if TurnData.money >= 1000000.0 and TurnData.num_viral_posts_posted > 15:
+				return true
+			else:
+				return false
+		"Household Name":
+			if TurnData.num_viral_posts_posted >= 15 and TurnData.follower_base >= 1000:
+				return true
+			else:
+				return false
+		"Makes Sense":
+			if TurnData.viral_chance >= 0.02 and TurnData.num_viral_posts_posted >= 25:
+				return true
+			else:
+				return false
+		"Trending":
+			if TurnData.num_viral_posts_posted >= 50:
+				return true
+			else:
+				return false
+		"Doing Capitalism Wrong":
+			if TurnData.money <= 1000.0 and TurnData.follower_base <= 100 and TurnData.sponsors <= 10:
+				return true
+			else:
+				return false
+		"Capitalism's Bitch":
+			if TurnData.money >= 1000000000.0 and TurnData.follower_base >= 5000 and TurnData.sponsors >= 100:
+				return true
+			else:
+				return false
+		"Refusing to Engage":
+			if TurnData.sponsor_chance == 0.1 and TurnData.viral_chance == 0.01 and TurnData.threshold_modifier == 0.5:
+				return true
+			else:
+				return false
+		"Lucky Duck":
+			if TurnData.sponsor_chance >= 0.2 and TurnData.viral_chance >= 0.02 and TurnData.threshold_modifier <= 0.3:
+				return true
+			else:
+				return false
+		"The World is Watching":
+			if TurnData.num_ally_posts >= 25 and TurnData.num_education_posts_read == 5 and TurnData.follower_base >= 5000:
+				return true
+			else:
+				return false
+		"Overachiever":
+			if TurnData.viral_chance >= 0.02 and TurnData.sponsor_chance >= 0.2 and TurnData.threshold_modifier <= 0.3 and TurnData.money >= 1000000000.0 and TurnData.follower_base >= 1500:
+				return true
+			else:
+				return false
+	return false

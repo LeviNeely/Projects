@@ -113,12 +113,23 @@ func connect_signals() -> void:
 	TurnData.delete.connect(remove_permanent)
 
 func update_data() -> void:
-	money_amount.text = "%.2f" % TurnData.money
+	money_amount.text = determine_money_amount(TurnData.money)
 	post_chance_value.text = "%.2f" % (TurnData.threshold_modifier * 100) + "%"
 	follower_amount.text = str(TurnData.follower_base)
 	virality_chance_value.text = "%.2f" % (TurnData.viral_chance * 100) + "%"
 	sponsors_amount.text = str(TurnData.sponsors)
 	sponsor_chance_value.text = "%.2f" % (TurnData.sponsor_chance * 100) + "%"
+
+func determine_money_amount(money: float) -> String:
+	if money <= 999999.99:
+		return "%.2f" % money
+	else:
+		var exponent: int = 0
+		while money >= 10.0:
+			money /= 10.0
+			exponent += 1
+		var mantissa: float = snapped(money, 0.01)
+		return "%.2fe%d" % [mantissa, exponent]
 
 func draw_permanents() -> void:
 	for slot in slots:
