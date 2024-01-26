@@ -1,5 +1,8 @@
 extends Control
 
+#The "root" of the scene
+@onready var root: CanvasLayer = %CanvasLayer
+
 #Permanent selection area variables
 @onready var permanent_1: PanelContainer = %Permanent1
 @onready var permanent_2: PanelContainer = %Permanent2
@@ -89,6 +92,10 @@ func _ready() -> void:
 	draw_permanents()
 	fill_in_permanents()
 	assign_permanent_slots()
+	update_date()
+
+func update_date() -> void:
+	%Day.text = "Day " + str(TurnData.date - 1)
 
 func determine_education_amount() -> void:
 	if TurnData.num_education_posts_read == 5:
@@ -236,6 +243,7 @@ func activate_buttons() -> void:
 				button.disabled = false
 
 func proceed_to_next_day() -> void:
+	ButtonClick.play()
 	if TurnData.date == 31:
 		TurnData.finished_first_game = true
 		TurnData.save_data()
@@ -245,16 +253,49 @@ func proceed_to_next_day() -> void:
 		get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_close_pressed():
+	ButtonClick.play()
 	TurnData.save_data()
 	get_tree().quit()
 
 func _on_home_pressed():
+	ButtonClick.play()
 	TurnData.save_data()
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
 
 func _on_save_pressed():
+	ButtonClick.play()
 	TurnData.save_data()
 
 func _notification(what) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		TurnData.save_data()
+
+func _on_close_mouse_entered():
+	ButtonHover.play()
+
+func _on_home_mouse_entered():
+	ButtonHover.play()
+
+func _on_save_mouse_entered():
+	ButtonHover.play()
+
+func _on_continue_button_mouse_entered():
+	ButtonHover.play()
+
+func _on_help_pressed():
+	ButtonClick.play()
+	var help = load("res://Scenes/Screens/help_screen.tscn")
+	help = help.instantiate()
+	root.add_child(help)
+
+func _on_help_mouse_entered():
+	ButtonHover.play()
+
+func _on_settings_mouse_entered():
+	ButtonHover.play()
+
+func _on_settings_pressed():
+	ButtonClick.play()
+	var settings = load("res://Scenes/Screens/settings_screen.tscn")
+	settings = settings.instantiate()
+	root.add_child(settings)

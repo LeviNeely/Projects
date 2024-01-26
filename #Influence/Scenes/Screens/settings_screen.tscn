@@ -1,0 +1,124 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1goonqgic5yc"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/settings_screen.gd" id="1_e1i4y"]
+[ext_resource type="Texture2D" uid="uid://b36w8d0mt6sli" path="res://Assets/WindowBorder/Windows_Inner_Frame_Inverted.png" id="1_lagxt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6fv7"]
+texture = ExtResource("1_lagxt")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="SettingsScreen" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -225.0
+offset_right = 480.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e1i4y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_f6fv7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Music Volume        "
+
+[node name="MusicVolume" type="HSlider" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_f6fv7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Background Volume "
+
+[node name="BackgroundVolume" type="HSlider" parent="VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_f6fv7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer3/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "SFX Volume          "
+
+[node name="SFXVolume" type="HSlider" parent="VBoxContainer/MarginContainer3/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Close"
+
+[connection signal="value_changed" from="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/BackgroundVolume" to="." method="_on_background_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer3/PanelContainer/HBoxContainer/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

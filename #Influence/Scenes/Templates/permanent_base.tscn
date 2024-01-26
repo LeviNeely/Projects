@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c1m7ilpyt4fwq"]
+[gd_scene load_steps=2 format=3 uid="uid://c1m7ilpyt4fwq"]
+
+[ext_resource type="Script" path="res://Scripts/Miscellaneous/button_click.gd" id="1_xt1w6"]
 
 [node name="PanelContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(150, 131)
@@ -43,3 +45,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 theme_type_variation = &"SmallButton"
 text = "Buy"
+script = ExtResource("1_xt1w6")
+
+[connection signal="mouse_entered" from="VBoxContainer/CostAndButton/Button" to="VBoxContainer/CostAndButton/Button" method="_on_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="VBoxContainer/CostAndButton/Button" method="_on_pressed"]

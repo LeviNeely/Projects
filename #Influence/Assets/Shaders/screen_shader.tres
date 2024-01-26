@@ -4,8 +4,21 @@
 
 [resource]
 shader = ExtResource("1_q6gw6")
-shader_parameter/crt_curve = 0.0
-shader_parameter/crt_scan_line_color = 0.0
-shader_parameter/aperture_grille_rate = 0.0
-shader_parameter/rf_switch_esque_blur = 0.5
-shader_parameter/white_noise_rate = 0.08
+shader_parameter/screen_size = Vector2(1920, 1080)
+shader_parameter/show_curvature = false
+shader_parameter/curvature_x_amount = 6.0
+shader_parameter/curvature_y_amount = 4.0
+shader_parameter/corner_color = Vector4(0, 0, 0, 1)
+shader_parameter/show_vignette = false
+shader_parameter/vignette_opacity = 0.2
+shader_parameter/show_horizontal_scan_lines = true
+shader_parameter/horizontal_scan_lines_amount = 180.0
+shader_parameter/horizontal_scan_lines_opacity = 0.25
+shader_parameter/show_vertical_scan_lines = false
+shader_parameter/vertical_scan_lines_amount = 320.0
+shader_parameter/vertical_scan_lines_opacity = 0.1
+shader_parameter/boost = 1.5
+shader_parameter/aberration_amount = 2.75
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/static_line_width = 0.005

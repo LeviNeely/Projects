@@ -1,5 +1,8 @@
 extends Control
 
+#The "root" node (for all drawing)
+@onready var root: CanvasLayer = $CanvasLayer
+
 #Post selection area variables
 @onready var post_selection: HBoxContainer = %PostSelection
 @onready var first_slot: PanelContainer = post_selection.get_children()[1]
@@ -176,6 +179,7 @@ func clear_posts() -> void:
 			slot.get_children()[0].queue_free()
 
 func draw_posts() -> void:
+	ButtonClick.play()
 	update_redraw_button()
 	check_if_redraw_is_valid()
 	clear_posts()
@@ -212,7 +216,8 @@ func determine_posts() -> void:
 		if post_chance <= TurnData.common_threshold:
 			var second_chance: float = randf()
 			if TurnData.num_education_posts_read > 0 and second_chance < 0.25:
-				post = load(ally_posts[TurnData.num_education_posts_read - 1])
+				var ally_post_index: int = randi() % TurnData.num_education_posts_read
+				post = load(ally_posts[ally_post_index])
 				post = post.instantiate()
 				slot_management(slot, post)
 			else:
@@ -322,6 +327,7 @@ func get_redraw_cost() -> String:
 	return "%.2f" % cost
 
 func play() -> void:
+	ButtonClick.play()
 	if TurnData.all_posts_viral:
 		TurnData.viral_chance = viral_chance
 		TurnData.all_posts_viral = false
@@ -335,16 +341,52 @@ func play() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Screens/follower_award_screen.tscn")
 
 func _on_close_pressed():
+	ButtonClick.play()
 	TurnData.save_data()
 	get_tree().quit()
 
 func _on_home_pressed():
+	ButtonClick.play()
 	TurnData.save_data()
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
 
 func _on_save_pressed():
+	ButtonClick.play()
 	TurnData.save_data()
 
 func _notification(what) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		TurnData.save_data()
+
+func _on_close_mouse_entered():
+	ButtonHover.play()
+
+func _on_home_mouse_entered():
+	ButtonHover.play()
+
+func _on_save_mouse_entered():
+	ButtonHover.play()
+
+func _on_redraw_mouse_entered():
+	ButtonHover.play()
+
+func _on_post_mouse_entered():
+	ButtonHover.play()
+
+func _on_help_pressed():
+	ButtonClick.play()
+	var help = load("res://Scenes/Screens/help_screen.tscn")
+	help = help.instantiate()
+	root.add_child(help)
+
+func _on_help_mouse_entered():
+	ButtonHover.play()
+
+func _on_settings_pressed():
+	ButtonClick.play()
+	var settings = load("res://Scenes/Screens/settings_screen.tscn")
+	settings = settings.instantiate()
+	root.add_child(settings)
+
+func _on_settings_mouse_entered():
+	ButtonHover.play()

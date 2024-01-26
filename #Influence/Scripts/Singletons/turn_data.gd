@@ -12,7 +12,7 @@ signal delete(parent_node)
 
 #Player stats
 var start_money: float = 1.00
-var money: float = 1000000000000.00
+var money: float = 1.00
 var follower_base: int = 10
 var sponsors: int = 0
 

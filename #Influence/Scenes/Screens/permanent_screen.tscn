@@ -1,11 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bj5kak1jpm1br"]
+[gd_scene load_steps=18 format=3 uid="uid://bj5kak1jpm1br"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/permanent_screen.gd" id="1_j3yy1"]
 [ext_resource type="Material" uid="uid://806pw1w3og6q" path="res://Assets/Shaders/screen_shader.tres" id="1_ocytu"]
 [ext_resource type="Texture2D" uid="uid://codlodhonc1gr" path="res://Assets/WindowBorder/Window_Header.png" id="2_njwey"]
 [ext_resource type="Texture2D" uid="uid://ra37oyj5pmyi" path="res://Assets/Icons/close.tres" id="3_uu4dd"]
-[ext_resource type="Texture2D" uid="uid://dowcimj8xqtpi" path="res://Assets/Icons/minimize.tres" id="4_jh52i"]
-[ext_resource type="Texture2D" uid="uid://kklcn6pm1w4w" path="res://Assets/Icons/maximize.tres" id="5_t4mw1"]
 [ext_resource type="Texture2D" uid="uid://3mrxu3vwjovp" path="res://Assets/WindowBorder/Teal_Title_Bar.png" id="6_iokyu"]
 [ext_resource type="Texture2D" uid="uid://c4imvdgrdyp4n" path="res://Assets/WindowBorder/Green_Title_Bar.png" id="7_00vkj"]
 [ext_resource type="Texture2D" uid="uid://h88v7k7hsdrg" path="res://Assets/Icons/icons-set-1_0000s_0049_Layer-141.png" id="8_yyijl"]
@@ -54,6 +52,7 @@ grow_vertical = 2
 script = ExtResource("1_j3yy1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 z_index = 2
@@ -85,14 +84,6 @@ layout_mode = 2
 layout_mode = 2
 icon = ExtResource("3_uu4dd")
 
-[node name="Minimize" type="Button" parent="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("4_jh52i")
-
-[node name="Maximize" type="Button" parent="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("5_t4mw1")
-
 [node name="ToolBar" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer"]
 layout_mode = 2
 
@@ -115,6 +106,12 @@ text = "Settings"
 [node name="Help" type="Button" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
 layout_mode = 2
 text = "Help"
+
+[node name="Day" type="Label" parent="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Day 1"
 
 [node name="MainArea" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
 layout_mode = 2
@@ -433,7 +430,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer/Close" to="." method="_on_close_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Home" to="." method="_on_home_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Save" to="." method="_on_save_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Help" to="." method="_on_help_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Help" to="." method="_on_help_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSpace/PostSpaceBody/PostOrder/ContinueButton" to="." method="proceed_to_next_day"]

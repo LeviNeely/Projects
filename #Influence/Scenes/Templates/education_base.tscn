@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b81hw2suwdspr"]
+[gd_scene load_steps=4 format=3 uid="uid://b81hw2suwdspr"]
 
 [ext_resource type="Texture2D" uid="uid://codlodhonc1gr" path="res://Assets/WindowBorder/Window_Header.png" id="1_kglu8"]
-[ext_resource type="Texture2D" uid="uid://ra37oyj5pmyi" path="res://Assets/Icons/close.tres" id="2_ukkao"]
-[ext_resource type="Texture2D" uid="uid://dowcimj8xqtpi" path="res://Assets/Icons/minimize.tres" id="3_wj4ck"]
-[ext_resource type="Texture2D" uid="uid://kklcn6pm1w4w" path="res://Assets/Icons/maximize.tres" id="4_th5bn"]
+[ext_resource type="Script" path="res://Scripts/Miscellaneous/button_hover.gd" id="5_bjj2w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4g4m"]
 texture = ExtResource("1_kglu8")
@@ -36,20 +34,11 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_n4g4m")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/WindowToolBar"]
+[node name="Label" type="Label" parent="VBoxContainer/WindowToolBar"]
 layout_mode = 2
-
-[node name="Close" type="Button" parent="VBoxContainer/WindowToolBar/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("2_ukkao")
-
-[node name="Minimize" type="Button" parent="VBoxContainer/WindowToolBar/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_wj4ck")
-
-[node name="Maximize" type="Button" parent="VBoxContainer/WindowToolBar/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("4_th5bn")
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "CEASEFIRE NOW"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -84,3 +73,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_horizontal = 4
 text = "OK"
+script = ExtResource("5_bjj2w")
+
+[connection signal="mouse_entered" from="VBoxContainer/MarginContainer2/Button" to="VBoxContainer/MarginContainer2/Button" method="_on_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="VBoxContainer/MarginContainer2/Button" method="_on_pressed"]

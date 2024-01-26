@@ -1,5 +1,6 @@
 extends Control
 
+@onready var root: CanvasLayer = $CanvasLayer
 @onready var new_game: Button = %NewGame
 @onready var load_game: Button = %LoadGame
 @onready var badges: HBoxContainer = %Badges
@@ -12,6 +13,7 @@ func _ready() -> void:
 		badges.visible = true
 
 func _on_new_game_pressed() -> void:
+	ButtonClick.play()
 	new_game.text = "New Round"
 	load_game.text = "Continue Round"
 	load_game.disabled = true
@@ -21,9 +23,11 @@ func _on_new_game_pressed() -> void:
 	TurnData.deep_reset()
 
 func start_new_game() -> void:
+	ButtonClick.play()
 	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_load_game_pressed() -> void:
+	ButtonClick.play()
 	new_game.text = "New Round"
 	load_game.text = "Continue Round"
 	new_game.disconnect("pressed", _on_new_game_pressed)
@@ -34,18 +38,43 @@ func _on_load_game_pressed() -> void:
 		load_game.disabled = true
 
 func start_new_round() -> void:
+	ButtonClick.play()
 	TurnData.completely_reset()
 	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func continue_round() -> void:
+	ButtonClick.play()
 	TurnData.load_data()
 	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_options_pressed() -> void:
-	pass # Eventually replace this with loading the options screen
+	ButtonClick.play()
+	var settings = load("res://Scenes/Screens/settings_screen.tscn")
+	settings = settings.instantiate()
+	root.add_child(settings)
 
 func _on_quit_pressed() -> void:
+	ButtonClick.play()
 	get_tree().quit()
 
 func _on_badges_button_pressed():
+	ButtonClick.play()
 	get_tree().change_scene_to_file("res://Scenes/Screens/badges_screen.tscn")
+
+func _on_new_game_mouse_entered():
+	if not new_game.disabled:
+		ButtonHover.play()
+
+func _on_load_game_mouse_entered():
+	if not load_game.disabled:
+		ButtonHover.play()
+
+func _on_options_mouse_entered():
+	ButtonHover.play()
+
+func _on_quit_mouse_entered():
+	ButtonHover.play()
+
+func _on_badges_button_mouse_entered():
+	if not badges_button.disabled:
+		ButtonHover.play()

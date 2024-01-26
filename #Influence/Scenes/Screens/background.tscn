@@ -112,4 +112,5 @@ horizontal_alignment = 1
 
 [connection signal="button_down" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]
 [connection signal="button_up" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://chpw14d3mpba3"]
+[gd_scene load_steps=3 format=3 uid="uid://chpw14d3mpba3"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/post_base.gd" id="1_mixx8"]
+[ext_resource type="Script" path="res://Scripts/Miscellaneous/button_delete.gd" id="2_ck4ma"]
 
 [node name="Control" type="PanelContainer"]
 anchors_preset = 15
@@ -53,3 +54,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 theme_type_variation = &"SmallButton"
 text = "Add Post"
+script = ExtResource("2_ck4ma")
+
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_pressed"]

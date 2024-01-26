@@ -78,6 +78,7 @@ func connect_buttons(index: int, button: TextureButton) -> void:
 	button.connect("mouse_exited", mouse_off)
 
 func mouse_over(index: int) -> void:
+	ButtonHover.play()
 	panel = PanelContainer.new()
 	label = Label.new()
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
@@ -141,4 +142,8 @@ func mouse_off() -> void:
 	root.remove_child(panel)
 
 func _on_button_pressed():
+	ButtonClick.play()
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
+
+func _on_button_mouse_entered():
+	ButtonHover.play()

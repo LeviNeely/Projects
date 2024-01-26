@@ -98,7 +98,7 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Options"
+text = "Settings"
 
 [node name="Quit" type="Button" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
@@ -131,8 +131,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/LoadGame" to="." method="_on_load_game_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/Badges/BadgesButton" to="." method="_on_badges_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/Badges/BadgesButton" to="." method="_on_badges_button_pressed"]

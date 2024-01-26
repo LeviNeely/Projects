@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c04uen4f1fhua"]
+
+[ext_resource type="AudioStream" uid="uid://bbphfacluru6b" path="res://Assets/Audio/Background/real-vhs-169982.mp3" id="1_eld3y"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_eld3y")
+volume_db = -10.0
+autoplay = true

@@ -61,7 +61,7 @@ script = ExtResource("1_q6vn2")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-z_index = 2
+z_index = 6
 material = ExtResource("2_tyaqy")
 anchors_preset = 15
 anchor_right = 1.0
@@ -379,8 +379,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer/Close" to="." method="_on_close_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/WindowToolBar/HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Home" to="." method="_on_home_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Save" to="." method="_on_save_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Help" to="." method="_on_help_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/ToolBar/HBoxContainer/Help" to="." method="_on_help_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSelection/PostSelectionBody/PostSelection/Redraw" to="." method="_on_redraw_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSelection/PostSelectionBody/PostSelection/Redraw" to="." method="draw_posts"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSelection/PostSelectionBody/PostSelection/Post!" to="." method="_on_post_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/MainArea/InteractiveZone/PostSelection/PostSelectionBody/PostSelection/Post!" to="." method="play"]

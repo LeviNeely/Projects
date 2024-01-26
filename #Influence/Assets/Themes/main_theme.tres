@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=39 format=3 uid="uid://cepjcrbfgc01k"]
+[gd_resource type="Theme" load_steps=46 format=3 uid="uid://cepjcrbfgc01k"]
 
 [ext_resource type="FontFile" uid="uid://bb4fhyj4mmghb" path="res://Assets/Fonts/M 8pt.ttf" id="1_c02on"]
 [ext_resource type="Texture2D" uid="uid://djijdtlc6qwvd" path="res://Assets/WindowBorder/CommonBackground.png" id="1_usqoa"]
@@ -9,9 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://c5618wqb48kw" path="res://Assets/Buttons/Windows_Button_Focus_Outlined.png" id="5_22r2u"]
 [ext_resource type="Texture2D" uid="uid://b36w8d0mt6sli" path="res://Assets/WindowBorder/Windows_Inner_Frame_Inverted.png" id="6_5qj6p"]
 [ext_resource type="Texture2D" uid="uid://vwcp3gshl6yc" path="res://Assets/WindowBorder/LegendaryBackground.png" id="7_cg8lj"]
+[ext_resource type="Texture2D" uid="uid://c3nl0jhowjk21" path="res://Assets/Slider/Windows_Slider_Handle.png" id="8_6nsgs"]
 [ext_resource type="Texture2D" uid="uid://b1sbx0x71ocll" path="res://Assets/WindowBorder/NormalBackground.png" id="8_vs7sa"]
+[ext_resource type="Texture2D" uid="uid://b5lhxf7ufr33q" path="res://Assets/Slider/Windows_Slider_Disabled.png" id="9_vtaj0"]
+[ext_resource type="Texture2D" uid="uid://dsyvub6sno1ih" path="res://Assets/Slider/Windows_Slider_Highlighted.png" id="10_plvuf"]
 [ext_resource type="Texture2D" uid="uid://d28m00qryi16" path="res://Assets/WindowBorder/RareBackground.png" id="10_x0ygt"]
 [ext_resource type="Texture2D" uid="uid://blklb2ivt1upo" path="res://Assets/WindowBorder/UncommonBackground.png" id="11_adqoi"]
+[ext_resource type="Texture2D" uid="uid://cub82sphta4si" path="res://Assets/Slider/Windows_Slider_Background.png" id="11_o1gcf"]
 [ext_resource type="Texture2D" uid="uid://el8mrbm8dg2m" path="res://Assets/Buttons/Scroll_Button_Up.png" id="13_ek6tw"]
 [ext_resource type="Texture2D" uid="uid://bselom7guuvew" path="res://Assets/Buttons/Scroll_Up_Button_Focused.png" id="14_8kbvh"]
 [ext_resource type="Texture2D" uid="uid://lg1fakbtchk4" path="res://Assets/Buttons/Scroll_Button_Down.png" id="14_rkm3w"]
@@ -63,6 +67,27 @@ texture_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjsn1"]
 texture = ExtResource("5_22r2u")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_awjvr"]
+texture = ExtResource("11_o1gcf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcgu6"]
+texture = ExtResource("11_o1gcf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 8.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_si16c"]
+texture = ExtResource("6_5qj6p")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -178,6 +203,12 @@ EducationPanel/base_type = &"PanelContainer"
 EducationPanel/styles/panel = SubResource("StyleBoxTexture_7o4mu")
 EmptyPanel/base_type = &"PanelContainer"
 EmptyPanel/styles/panel = SubResource("StyleBoxTexture_pjsn1")
+HSlider/icons/grabber = ExtResource("8_6nsgs")
+HSlider/icons/grabber_disabled = ExtResource("10_plvuf")
+HSlider/icons/grabber_highlight = ExtResource("9_vtaj0")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_awjvr")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_lcgu6")
+HSlider/styles/slider = SubResource("StyleBoxTexture_si16c")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)

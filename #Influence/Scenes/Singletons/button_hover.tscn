@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://h1oegpvuf2rs"]
+
+[ext_resource type="AudioStream" uid="uid://djsovnon0hban" path="res://Assets/Audio/SFX/rollover3.wav" id="1_jhiw4"]
+
+[node name="ButtonHover" type="AudioStreamPlayer"]
+stream = ExtResource("1_jhiw4")
+volume_db = -2.0

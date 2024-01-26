@@ -1,0 +1,242 @@
+[gd_scene load_steps=14 format=3 uid="uid://gd0crsfnda3o"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/help_screen.gd" id="1_2shmg"]
+[ext_resource type="Texture2D" uid="uid://h88v7k7hsdrg" path="res://Assets/Icons/icons-set-1_0000s_0049_Layer-141.png" id="1_jfntq"]
+[ext_resource type="Texture2D" uid="uid://cp5iw76uqsbu6" path="res://Assets/Icons/Followers.png" id="2_elf0v"]
+[ext_resource type="Texture2D" uid="uid://tqab53wimuws" path="res://Assets/Icons/icons-set-1_0000s_0007_Layer-99.png" id="3_evvfj"]
+[ext_resource type="Texture2D" uid="uid://c1ykxvr7i3djs" path="res://Assets/Icons/icons-set-1_0000s_0022_Layer-114.png" id="4_o1tpc"]
+[ext_resource type="Texture2D" uid="uid://6xsq5fnqp4ac" path="res://Assets/Icons/icons-set-1_0000s_0056_Layer-148.png" id="5_sv8wy"]
+[ext_resource type="Texture2D" uid="uid://dw6ysekal0ohg" path="res://Assets/Icons/icons-set-1_0000s_0032_Layer-124.png" id="6_4rboo"]
+[ext_resource type="Texture2D" uid="uid://djijdtlc6qwvd" path="res://Assets/WindowBorder/CommonBackground.png" id="7_6lgw2"]
+[ext_resource type="Texture2D" uid="uid://b1sbx0x71ocll" path="res://Assets/WindowBorder/NormalBackground.png" id="8_uomet"]
+[ext_resource type="Texture2D" uid="uid://blklb2ivt1upo" path="res://Assets/WindowBorder/UncommonBackground.png" id="9_2gwxu"]
+[ext_resource type="Texture2D" uid="uid://d28m00qryi16" path="res://Assets/WindowBorder/RareBackground.png" id="10_5hbra"]
+[ext_resource type="Texture2D" uid="uid://vwcp3gshl6yc" path="res://Assets/WindowBorder/LegendaryBackground.png" id="11_1nq06"]
+[ext_resource type="Material" uid="uid://bf14wjkk1x0oc" path="res://Assets/Shaders/new_shader_material.tres" id="12_okl8a"]
+
+[node name="HelpScreen" type="PanelContainer"]
+custom_minimum_size = Vector2(480, 270)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_2shmg")
+
+[node name="CanvasLayer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = -262.0
+offset_right = 472.0
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 64
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 6
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("1_jfntq")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("2_elf0v")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("3_evvfj")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("4_o1tpc")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("5_sv8wy")
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("6_4rboo")
+stretch_mode = 5
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("7_6lgw2")
+expand_mode = 4
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("8_uomet")
+expand_mode = 4
+
+[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("9_2gwxu")
+expand_mode = 4
+
+[node name="TextureRect10" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("10_5hbra")
+expand_mode = 4
+
+[node name="TextureRect11" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("11_1nq06")
+expand_mode = 4
+
+[node name="TextureRect12" type="TextureRect" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+material = ExtResource("12_okl8a")
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+texture = ExtResource("7_6lgw2")
+expand_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+text = "Purpose"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer/PanelContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+text = "Posting Screen"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer/PanelContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+text = "Posts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer/PanelContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+text = "Permanent Screen"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer5" type="PanelContainer" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer/PanelContainer5"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+text = "Permanents"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="CanvasLayer/ScrollContainer/MarginContainer/GridContainer/PanelContainer6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(131, 131)
+layout_mode = 2
+text = "Badges"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -49.0
+offset_right = 40.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Close"
+
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
