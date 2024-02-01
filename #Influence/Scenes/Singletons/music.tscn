@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://b1w1160r342hs"]
+[gd_scene load_steps=2 format=3 uid="uid://b1w1160r342hs"]
+
+[ext_resource type="Script" path="res://Scripts/Miscellaneous/music.gd" id="1_hf30n"]
 
 [node name="Music" type="AudioStreamPlayer"]
+script = ExtResource("1_hf30n")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Screens/badges_screen.gd" id="1_b74su"]
 [ext_resource type="Texture2D" uid="uid://codlodhonc1gr" path="res://Assets/WindowBorder/Window_Header.png" id="2_qyund"]
 [ext_resource type="Texture2D" uid="uid://dmb63hu6e7py4" path="res://Assets/Badges/trillionaire.png" id="3_4mobx"]
-[ext_resource type="Texture2D" uid="uid://brk7gchcqowl4" path="res://Assets/Icons/icons-set-1_0000s_0047_Layer-139.png" id="4_7unqy"]
+[ext_resource type="Texture2D" uid="uid://daaokygoeij6s" path="res://Assets/Icons/icons-set-1_0000s_0047_Layer-139.png" id="4_7unqy"]
 [ext_resource type="Texture2D" uid="uid://cx1wsn6j8e411" path="res://Assets/Badges/crowdsourcing.png" id="5_7wksu"]
 [ext_resource type="Texture2D" uid="uid://c0kuymd6u8hex" path="res://Assets/Badges/penniless,friendless.png" id="6_b8oku"]
 [ext_resource type="Texture2D" uid="uid://bndthw2s6butr" path="res://Assets/Badges/popular.png" id="7_hj71c"]

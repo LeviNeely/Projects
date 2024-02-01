@@ -84,6 +84,7 @@ func determine_end_screen() -> void:
 		label.text = descriptions[10]
 
 func _on_button_pressed():
+	Music.play_menu_theme()
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
 
 func determine_badges() -> void:

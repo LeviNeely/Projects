@@ -24,6 +24,7 @@ func _on_new_game_pressed() -> void:
 
 func start_new_game() -> void:
 	ButtonClick.play()
+	Music.play_game_theme()
 	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_load_game_pressed() -> void:
@@ -40,11 +41,13 @@ func _on_load_game_pressed() -> void:
 func start_new_round() -> void:
 	ButtonClick.play()
 	TurnData.completely_reset()
+	Music.play_game_theme()
 	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func continue_round() -> void:
 	ButtonClick.play()
 	TurnData.load_data()
+	Music.play_game_theme()
 	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_options_pressed() -> void:

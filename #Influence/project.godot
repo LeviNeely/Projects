@@ -23,6 +23,7 @@ ButtonClick="*res://Scenes/Singletons/button_click.tscn"
 ButtonDelete="*res://Scenes/Singletons/button_delete.tscn"
 Music="*res://Scenes/Singletons/music.tscn"
 Settings="*res://Scripts/Singletons/settings.gd"
+GlobalMethods="*res://Scripts/Singletons/global_methods.gd"
 
 [display]
 

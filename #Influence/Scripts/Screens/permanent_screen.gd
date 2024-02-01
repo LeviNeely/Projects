@@ -120,27 +120,28 @@ func connect_signals() -> void:
 	TurnData.delete.connect(remove_permanent)
 
 func update_data() -> void:
-	money_amount.text = determine_money_amount(TurnData.money)
+	money_amount.text = GlobalMethods.determine_money_amount(TurnData.money)
 	post_chance_value.text = "%.2f" % (TurnData.threshold_modifier * 100) + "%"
 	follower_amount.text = str(TurnData.follower_base)
 	virality_chance_value.text = "%.2f" % (TurnData.viral_chance * 100) + "%"
 	sponsors_amount.text = str(TurnData.sponsors)
 	sponsor_chance_value.text = "%.2f" % (TurnData.sponsor_chance * 100) + "%"
 
-func determine_money_amount(money: float) -> String:
-	if money <= 999999.99:
-		return "%.2f" % money
+func random_float_based_on_day(date: int) -> float:
+	if date <= 3:
+		return randf_range(0.0, TurnData.common_threshold)
+	elif date <= 6:
+		return randf_range(0.0, TurnData.normal_threshold)
+	elif date <= 9:
+		return randf_range(0.0, TurnData.uncommon_threshold)
+	elif date <= 12:
+		return randf_range(0.0, TurnData.rare_threshold)
 	else:
-		var exponent: int = 0
-		while money >= 10.0:
-			money /= 10.0
-			exponent += 1
-		var mantissa: float = snapped(money, 0.01)
-		return "%.2fe%d" % [mantissa, exponent]
+		return randf_range(0.0, 1.0)
 
 func draw_permanents() -> void:
 	for slot in slots:
-		var permanent_chance: float = randf()
+		var permanent_chance: float = random_float_based_on_day(TurnData.date - 1)
 		var permanent
 		if permanent_chance <= TurnData.common_threshold:
 			if education_offered:

@@ -201,6 +201,18 @@ func ininitialize_random_post(index_max: int, rarity: String) -> Node:
 			load_post = load(legendary_posts[index])
 	return load_post.instantiate()
 
+func random_float_based_on_day(date: int) -> float:
+	if date <= 3:
+		return randf_range(0.0, TurnData.common_threshold)
+	elif date <= 6:
+		return randf_range(0.0, TurnData.normal_threshold)
+	elif date <= 9:
+		return randf_range(0.0, TurnData.uncommon_threshold)
+	elif date <= 12:
+		return randf_range(0.0, TurnData.rare_threshold)
+	else:
+		return randf_range(0.0, 1.0)
+
 func determine_posts() -> void:
 	if TurnData.all_posts_viral:
 		if not_stored:
@@ -211,7 +223,7 @@ func determine_posts() -> void:
 		if TurnData.one_guaranteed_viral_post and not TurnData.all_posts_viral:
 			viral_chance = TurnData.viral_chance
 			TurnData.viral_chance = 1.0
-		var post_chance: float = randf()
+		var post_chance: float = random_float_based_on_day(TurnData.date)
 		var post
 		if post_chance <= TurnData.common_threshold:
 			var second_chance: float = randf()
@@ -285,20 +297,9 @@ func remove_post(parent_node: PanelContainer) -> void:
 	available_posts.append(parent_node)
 
 func update_data() -> void:
-	money_amount.text = determine_money_amount(TurnData.money)
+	money_amount.text = GlobalMethods.determine_money_amount(TurnData.money)
 	followers_amounts.text = str(TurnData.follower_base)
 	sponsors_amounts.text = str(TurnData.sponsors)
-
-func determine_money_amount(money: float) -> String:
-	if money <= 999999.99:
-		return "%.2f" % money
-	else:
-		var exponent: int = 0
-		while money >= 10.0:
-			money /= 10.0
-			exponent += 1
-		var mantissa: float = snapped(money, 0.01)
-		return "%.2fe%d" % [mantissa, exponent]
 
 func update_redraw_button() -> void:
 	if TurnData.num_free_redraws == 0:
@@ -324,7 +325,7 @@ func get_redraw_cost() -> String:
 	var money: float = TurnData.start_money
 	var num_redraws: int = TurnData.num_paid_redraws
 	cost = snapped((money * grow_percentage * pow(grow_factor, num_redraws)), 0.01)
-	return "%.2f" % cost
+	return GlobalMethods.determine_money_amount(cost)
 
 func play() -> void:
 	ButtonClick.play()
