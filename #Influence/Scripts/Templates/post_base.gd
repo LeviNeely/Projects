@@ -6,6 +6,8 @@ extends PanelContainer
 @onready var text: Label = %Text
 @onready var cost: Label = %Cost
 @onready var shader: ShaderMaterial = preload("res://Assets/Shaders/new_shader_material.tres")
+@onready var save_shader: ShaderMaterial = preload("res://Assets/Shaders/saved_post.tres")
+@onready var check_box: CheckBox = %CheckBox
 
 var viral: bool = false
 

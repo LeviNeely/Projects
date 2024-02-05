@@ -1,8 +1,12 @@
 extends PanelContainer
 
 @onready var cost: Label = %Cost
+@onready var save: VBoxContainer = %Save
 
 var base_followers_gained: int = 1
+
+func _ready() -> void:
+	save.visible = false
 
 func instance() -> void:
 	randomize()

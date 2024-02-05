@@ -48,6 +48,13 @@ var player_hand: Array = [
 	null
 ]
 
+#Saved posts
+var saved_posts: Array = [
+	null,
+	null,
+	null
+]
+
 #The player's permanents
 var permanents: Array = [
 	null, 
@@ -61,6 +68,13 @@ var permanents: Array = [
 	null
 ]
 var double_permanents: bool = false
+
+#Saved permanents
+var saved_permanents: Array = [
+	null,
+	null,
+	null
+]
 
 #Post-specific booleans
 var one_guaranteed_viral_post: bool = false
@@ -254,23 +268,24 @@ func save_data() -> void:
 
 func load_data() -> void:
 	var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
-	data = file.get_var()
-	start_money = data.start_money
-	money = data.money
-	follower_base = data.follower_base
-	sponsors = data.sponsors
-	sponsor_chance = data.sponsor_chance
-	viral_chance = data.viral_chance
-	threshold_modifier = data.threshold_modifier
-	permanents = data.permanents
-	double_permanents = data.double_permanents
-	one_guaranteed_viral_post = data.one_guaranteed_viral_post
-	all_posts_viral = data.all_posts_viral
-	sponsor_multiplier = data.sponsor_multiplier
-	date = data.date
-	num_viral_posts_posted = data.num_viral_posts_posted
-	num_education_posts_read = data.num_education_posts_read
-	num_ally_posts = data.num_ally_posts
-	finished_first_game = data.finished_first_game
-	earned_badges = data.earned_badges
-	update_thresholds()
+	if file:
+		data = file.get_var()
+		start_money = data.start_money
+		money = data.money
+		follower_base = data.follower_base
+		sponsors = data.sponsors
+		sponsor_chance = data.sponsor_chance
+		viral_chance = data.viral_chance
+		threshold_modifier = data.threshold_modifier
+		permanents = data.permanents
+		double_permanents = data.double_permanents
+		one_guaranteed_viral_post = data.one_guaranteed_viral_post
+		all_posts_viral = data.all_posts_viral
+		sponsor_multiplier = data.sponsor_multiplier
+		date = data.date
+		num_viral_posts_posted = data.num_viral_posts_posted
+		num_education_posts_read = data.num_education_posts_read
+		num_ally_posts = data.num_ally_posts
+		finished_first_game = data.finished_first_game
+		earned_badges = data.earned_badges
+		update_thresholds()

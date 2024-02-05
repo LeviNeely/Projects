@@ -12,7 +12,7 @@ script = ExtResource("2_dpsnc")
 texture = ExtResource("3_bjtjc")
 
 [node name="Text" parent="VBoxContainer/ScrollContainer" index="0"]
-text = "Common Meme: Increase virality chance by 0.1% for next turn."
+text = "Increase virality chance by 0.1%."
 
 [node name="Button" parent="VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true

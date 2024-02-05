@@ -3,6 +3,7 @@ extends PanelContainer
 @onready var cost: Label = %Cost
 @onready var shader: ShaderMaterial = preload("res://Assets/Shaders/new_shader_material.tres")
 @onready var button: Button = %Button
+@onready var save_shader: ShaderMaterial = preload("res://Assets/Shaders/saved_post.tres")
 
 var viral: bool = false
 

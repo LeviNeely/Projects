@@ -54,9 +54,9 @@ var text: Array[String] = [
 	"Legendary: The most rare type, appears 3% of the time, unlocks on day 13.",
 	"Viral: When a post goes viral, its abilities are 50% more powerful and costs 30% less. Occurs 1% of the time.",
 	"You are an influencer trying to earn money, gain followers, and obtain sponsors. You have 30 days to acheive your dreams!",
-	"In the posting screen you can draw posts, reroll posts drawn (you have a certain number of free redraws before having to pay), delete posts in your post order, and post your posts for the day (posting your posts for the day ends the day).",
+	"In the posting screen you can draw posts, reroll posts drawn (you have a certain number of free redraws before having to pay), delete posts in your post order, save posts for a later day, and post your posts for the day (posting your posts for the day ends the day).",
 	"Posts are the main way you can accomplish your goals of earning money, gaining followers, and obtaining sponsors. Each post has a different ability and costs, so read carefully!",
-	"In the permanent screen you can purchase one permanents and delete permanents you have already purchased. These permanent abilities can be powerful as their affects happen at the beginning of each day.",
+	"In the permanent screen you can purchase one permanent, save a permanent for a later day, and delete permanents you have already purchased. These permanent abilities can be powerful as their affects happen at the beginning of each day.",
 	"Permanents are powerful permanent upgrades that activate at the beginning of every day. Each permanent has different abilities and costs, so read carefully!",
 	"These are different achievements that you can earn if you complete a round (30 days) under certain conditiions. Unlocked after completing your first round."
 ]

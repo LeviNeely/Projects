@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1m7ilpyt4fwq"]
+[gd_scene load_steps=3 format=3 uid="uid://c1m7ilpyt4fwq"]
 
 [ext_resource type="Script" path="res://Scripts/Miscellaneous/button_click.gd" id="1_xt1w6"]
+[ext_resource type="Script" path="res://Scripts/Miscellaneous/permanent_check_box.gd" id="2_73fu7"]
 
 [node name="PanelContainer" type="PanelContainer"]
-custom_minimum_size = Vector2(150, 131)
+custom_minimum_size = Vector2(145, 125)
 offset_right = 16.0
 offset_bottom = 16.0
 size_flags_horizontal = 3
@@ -47,5 +48,20 @@ theme_type_variation = &"SmallButton"
 text = "Buy"
 script = ExtResource("1_xt1w6")
 
+[node name="Save" type="VBoxContainer" parent="VBoxContainer/CostAndButton"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CostAndButton/Save"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Save"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/CostAndButton/Save"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_73fu7")
+
 [connection signal="mouse_entered" from="VBoxContainer/CostAndButton/Button" to="VBoxContainer/CostAndButton/Button" method="_on_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/CostAndButton/Button" to="VBoxContainer/CostAndButton/Button" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/CostAndButton/Save/CheckBox" to="VBoxContainer/CostAndButton/Save/CheckBox" method="_on_pressed"]

@@ -1,10 +1,14 @@
 extends PanelContainer
 
 @onready var cost: Label = %Cost
+@onready var save: VBoxContainer = %Save
 
 var total_days: float = 30.0
 var base_money_gained: float = 1.0 * (1.0 + (float(TurnData.date) / total_days))
 var money: float
+
+func _ready() -> void:
+	save.visible = false
 
 func instance() -> void:
 	randomize()

@@ -112,6 +112,7 @@ const grow_percentage: float = 0.01
 var viral_chance: float
 var permanents: Array = []
 var not_stored: bool = true
+@onready var save_shader: ShaderMaterial = preload("res://Assets/Shaders/saved_post.tres")
 
 func _ready() -> void:
 	randomize()
@@ -219,51 +220,75 @@ func determine_posts() -> void:
 			viral_chance = TurnData.viral_chance
 			not_stored = false
 		TurnData.viral_chance = 1.0
+	var index: int = 0
 	for slot in slots:
-		if TurnData.one_guaranteed_viral_post and not TurnData.all_posts_viral:
-			viral_chance = TurnData.viral_chance
-			TurnData.viral_chance = 1.0
-		var post_chance: float = random_float_based_on_day(TurnData.date)
-		var post
-		if post_chance <= TurnData.common_threshold:
-			var second_chance: float = randf()
-			if TurnData.num_education_posts_read > 0 and second_chance < 0.25:
-				var ally_post_index: int = randi() % TurnData.num_education_posts_read
-				post = load(ally_posts[ally_post_index])
-				post = post.instantiate()
-				slot_management(slot, post)
-			else:
-				post = ininitialize_random_post(5, "common")
-				slot_management(slot, post)
-		elif post_chance > TurnData.common_threshold and post_chance <= TurnData.normal_threshold:
-			post = ininitialize_random_post(5, "normal")
-			slot_management(slot, post)
-		elif post_chance > TurnData.normal_threshold and post_chance <= TurnData.uncommon_threshold:
-			post = ininitialize_random_post(6, "uncommon")
-			slot_management(slot, post)
-		elif post_chance > TurnData.uncommon_threshold and post_chance <= TurnData.rare_threshold:
-			post = ininitialize_random_post(4, "rare")
+		if TurnData.saved_posts[index] != null:
+			var post = load(TurnData.saved_posts[index])
+			post = post.instantiate()
+			var check_box = post.find_child("CheckBox")
+			check_box.button_pressed = true
+			post.material = save_shader
+			var image = post.find_child("Image")
+			image.material = save_shader
+			if post.viral:
+				post.material = save_shader
 			slot_management(slot, post)
 		else:
-			post = ininitialize_random_post(6, "legendary")
-			slot_management(slot, post)
-		if TurnData.one_guaranteed_viral_post and not TurnData.all_posts_viral:
-			TurnData.viral_chance = viral_chance
-			TurnData.one_guaranteed_viral_post = false
-		if post.viral:
-			TurnData.num_viral_posts += 1
+			if TurnData.one_guaranteed_viral_post and not TurnData.all_posts_viral:
+				viral_chance = TurnData.viral_chance
+				TurnData.viral_chance = 1.0
+			var post_chance: float = random_float_based_on_day(TurnData.date)
+			var post
+			if post_chance <= TurnData.common_threshold:
+				var second_chance: float = randf()
+				if TurnData.num_education_posts_read > 0 and second_chance < 0.25:
+					var ally_post_index: int = randi() % TurnData.num_education_posts_read
+					post = load(ally_posts[ally_post_index])
+					post = post.instantiate()
+					slot_management(slot, post)
+				else:
+					post = ininitialize_random_post(5, "common")
+					slot_management(slot, post)
+			elif post_chance > TurnData.common_threshold and post_chance <= TurnData.normal_threshold:
+				post = ininitialize_random_post(5, "normal")
+				slot_management(slot, post)
+			elif post_chance > TurnData.normal_threshold and post_chance <= TurnData.uncommon_threshold:
+				post = ininitialize_random_post(6, "uncommon")
+				slot_management(slot, post)
+			elif post_chance > TurnData.uncommon_threshold and post_chance <= TurnData.rare_threshold:
+				post = ininitialize_random_post(4, "rare")
+				slot_management(slot, post)
+			else:
+				post = ininitialize_random_post(6, "legendary")
+				slot_management(slot, post)
+			if TurnData.one_guaranteed_viral_post and not TurnData.all_posts_viral:
+				TurnData.viral_chance = viral_chance
+				TurnData.one_guaranteed_viral_post = false
+			if post.viral:
+				TurnData.num_viral_posts += 1
+		index += 1
 
 func _process(_delta) -> void:
 	update_buttons()
 
+func get_hand_size() -> int:
+	var hand_size: int = 0
+	for post in TurnData.player_hand:
+		if post == null:
+			continue
+		else:
+			hand_size += 1
+	return hand_size
+
 func update_buttons() -> void:
 	for slot in slots:
-		if slot.get_child(0):
-			var post = slot.get_child(0)
+		var post = slot.get_child(0)
+		if post:
+			var hand_size: int = get_hand_size()
 			var button = post.find_child("Button")
 			var cost = post.find_child("Cost")
 			var price = float(cost.text.replace("$", ""))
-			if price <= TurnData.money:
+			if price <= TurnData.money and hand_size < 5:
 				button.disabled = false
 			else:
 				button.disabled = true

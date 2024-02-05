@@ -1,5 +1,7 @@
 extends Node
 
+signal proceed
+
 func determine_money_amount(money: float) -> String:
 	if money <= 999999.99:
 		return "%.2f" % money

@@ -83,6 +83,7 @@ var available_permanent_slots: Array[PanelContainer] = []
 var num_permanents: int = 0
 var hide_buttons: bool = false
 var education_offered: bool = false
+@onready var save_shader: ShaderMaterial = preload("res://Assets/Shaders/saved_post.tres")
 
 func _ready() -> void:
 	randomize()
@@ -140,30 +141,40 @@ func random_float_based_on_day(date: int) -> float:
 		return randf_range(0.0, 1.0)
 
 func draw_permanents() -> void:
+	var index: int = 0
 	for slot in slots:
-		var permanent_chance: float = random_float_based_on_day(TurnData.date - 1)
-		var permanent
-		if permanent_chance <= TurnData.common_threshold:
-			if education_offered:
-				permanent = initialize_random_permanent(3, "common")
-				slot_management(slot, permanent)
-			else:
-				education_offered = true
-				permanent = load(education_permanent)
-				permanent = permanent.instantiate()
-				slot_management(slot, permanent)
-		elif permanent_chance > TurnData.common_threshold and permanent_chance <= TurnData.normal_threshold:
-			permanent = initialize_random_permanent(3, "normal")
-			slot_management(slot, permanent)
-		elif permanent_chance > TurnData.normal_threshold and permanent_chance <= TurnData.uncommon_threshold:
-			permanent = initialize_random_permanent(3, "uncommon")
-			slot_management(slot, permanent)
-		elif permanent_chance > TurnData.uncommon_threshold and permanent_chance <= TurnData.rare_threshold:
-			permanent = initialize_random_permanent(3, "rare")
+		if TurnData.saved_permanents[index] != null:
+			var permanent = load(TurnData.saved_permanents[index])
+			permanent = permanent.instantiate()
+			var check_box = permanent.find_child("CheckBox")
+			check_box.button_pressed = true
+			permanent.material = save_shader
 			slot_management(slot, permanent)
 		else:
-			permanent = initialize_random_permanent(4, "legendary")
-			slot_management(slot, permanent)
+			var permanent_chance: float = random_float_based_on_day(TurnData.date - 1)
+			var permanent
+			if permanent_chance <= TurnData.common_threshold:
+				if education_offered:
+					permanent = initialize_random_permanent(3, "common")
+					slot_management(slot, permanent)
+				else:
+					education_offered = true
+					permanent = load(education_permanent)
+					permanent = permanent.instantiate()
+					slot_management(slot, permanent)
+			elif permanent_chance > TurnData.common_threshold and permanent_chance <= TurnData.normal_threshold:
+				permanent = initialize_random_permanent(3, "normal")
+				slot_management(slot, permanent)
+			elif permanent_chance > TurnData.normal_threshold and permanent_chance <= TurnData.uncommon_threshold:
+				permanent = initialize_random_permanent(3, "uncommon")
+				slot_management(slot, permanent)
+			elif permanent_chance > TurnData.uncommon_threshold and permanent_chance <= TurnData.rare_threshold:
+				permanent = initialize_random_permanent(3, "rare")
+				slot_management(slot, permanent)
+			else:
+				permanent = initialize_random_permanent(4, "legendary")
+				slot_management(slot, permanent)
+		index += 1
 
 func slot_management(slot: PanelContainer, post: Node) -> void:
 	slot.add_child(post)
@@ -200,7 +211,9 @@ func fill_in_permanents() -> void:
 	for panel in panels:
 		if panel.get_child(0):
 			var permanent = panel.get_child(0)
+			var vbox: VBoxContainer = permanent.find_child("Save")
 			permanent.change_button()
+			vbox.visible = false
 
 func reparent_permanent(parent_node: PanelContainer) -> void:
 	hide_buttons = true
@@ -248,6 +261,7 @@ func proceed_to_next_day() -> void:
 	if TurnData.date == 31:
 		TurnData.finished_first_game = true
 		TurnData.save_data()
+		Music.play_end_theme()
 		get_tree().change_scene_to_file("res://Scenes/Screens/end_screen.tscn")
 	else:
 		TurnData.save_data()

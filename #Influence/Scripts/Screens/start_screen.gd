@@ -25,7 +25,10 @@ func _on_new_game_pressed() -> void:
 func start_new_game() -> void:
 	ButtonClick.play()
 	Music.play_game_theme()
-	get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
+	if TurnData.date == 1 and not TurnData.finished_first_game:
+		get_tree().change_scene_to_file("res://Scenes/Screens/tutorial.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
 func _on_load_game_pressed() -> void:
 	ButtonClick.play()

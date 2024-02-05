@@ -2,6 +2,7 @@ extends AudioStreamPlayer
 
 const menu_theme: AudioStreamMP3 = preload("res://Assets/Audio/Music/MenuTheme.mp3")
 const game_theme: AudioStreamMP3 = preload("res://Assets/Audio/Music/GameTheme.mp3")
+const end_theme: AudioStreamMP3 = preload("res://Assets/Audio/Music/EndGameTheme.mp3")
 
 func play_menu_theme() -> void:
 	if self.playing:
@@ -16,4 +17,7 @@ func play_game_theme() -> void:
 	self.play()
 
 func play_end_theme() -> void:
-	pass
+	if self.playing:
+		self.stop()
+	self.stream = end_theme
+	self.play()

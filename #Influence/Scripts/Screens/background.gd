@@ -2,6 +2,9 @@ extends Control
 
 var one_click: bool = false
 
+func _ready() -> void:
+	TurnData.load_data()
+
 func _on_texture_button_button_up() -> void:
 	ButtonClick.play()
 	if one_click:
@@ -9,5 +12,5 @@ func _on_texture_button_button_up() -> void:
 	else:
 		one_click = true
 
-func _on_texture_button_mouse_entered():
+func _on_texture_button_mouse_entered() -> void:
 	ButtonHover.play()
