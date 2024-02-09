@@ -123,15 +123,18 @@ var earned_badges: Dictionary = {
 	"Overachiever": false
 }
 
+## Function called when the game is started
 func _ready() -> void:
 	update_thresholds()
 
+## Function used to calculate the frequency that various rarities of posts show up
 func update_thresholds() -> void:
 	common_threshold = threshold_modifier * exp((threshold_exponent_modifier * 0.0))
 	normal_threshold = threshold_modifier * exp((threshold_exponent_modifier * 1.0))
 	uncommon_threshold = threshold_modifier * exp((threshold_exponent_modifier * 2.0))
 	rare_threshold = threshold_modifier * exp((threshold_exponent_modifier * 3.0))
 
+## Function used to completely reset the turn data, called when starting a new round
 func completely_reset() -> void:
 	#Player stats
 	start_money = 1.00
@@ -201,6 +204,7 @@ func completely_reset() -> void:
 	num_education_posts_read = 0
 	num_ally_posts = 0
 
+## Function used to deep reset an entire game, called when starting a brand new journey
 func deep_reset() -> void:
 	finished_first_game = false
 	earned_badges = {
@@ -231,6 +235,7 @@ func deep_reset() -> void:
 		"Overachiever": false
 	}
 
+## Function called to save data
 func save_data() -> void:
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	data = {
@@ -266,6 +271,7 @@ func save_data() -> void:
 	file.store_var(data)
 	file = null
 
+## Function called to load data
 func load_data() -> void:
 	var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
 	if file:

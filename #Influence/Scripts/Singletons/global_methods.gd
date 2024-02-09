@@ -1,7 +1,9 @@
 extends Node
 
+#A global signal
 signal proceed
 
+## A global function used to display money values appropriately (with scientific notation if needed)
 func determine_money_amount(money: float) -> String:
 	if money <= 999999.99:
 		return "%.2f" % money
