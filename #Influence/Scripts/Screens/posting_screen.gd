@@ -114,6 +114,7 @@ var permanents: Array = []
 var not_stored: bool = true
 @onready var save_shader: ShaderMaterial = preload("res://Assets/Shaders/saved_post.tres")
 
+## Function called on initialization
 func _ready() -> void:
 	randomize()
 	connect_signals()
@@ -125,6 +126,7 @@ func _ready() -> void:
 	update_data()
 	update_date()
 
+## Function for creating the permanents that the player has
 func create_permanents() -> void:
 	for permanent in TurnData.permanents:
 		if permanent != null:
@@ -132,6 +134,7 @@ func create_permanents() -> void:
 			var instance = perm.instantiate()
 			permanents.append(instance)
 
+## Function that ensures each permanent's ability is used at the start of the turn
 func play_permanents() -> void:
 	create_permanents()
 	for permanent in permanents:
@@ -139,6 +142,7 @@ func play_permanents() -> void:
 	if TurnData.double_permanents:
 		TurnData.double_permanents = false
 
+## Function that loads the permanent graphics onto the screen
 func fill_in_permanents() -> void:
 	var index: int = 0
 	for permanent in permanents:
@@ -146,9 +150,11 @@ func fill_in_permanents() -> void:
 		permanent.hide_cost_and_button()
 		index += 1
 
+## Function that updates money variables
 func prepare_money() -> void:
 	TurnData.start_money = TurnData.money
 
+## Function that resets all the data for the start of the turn
 func reset_data() -> void:
 	prepare_money()
 	TurnData.num_free_redraws = 2
@@ -162,23 +168,28 @@ func reset_data() -> void:
 	TurnData.sponsor_multiplier = 1
 	TurnData.player_hand = [null, null, null, null, null]
 
+## Function that updates the label displaying what day it is
 func update_date() -> void:
 	%Day.text = "Day " + str(TurnData.date)
 
+## Function that connects all the signals to their respective methods
 func connect_signals() -> void:
 	TurnData.move.connect(reparent_post)
 	TurnData.remove.connect(remove_post)
 
+## Function that checks if the player has enough money for a redraw
 func check_if_redraw_is_valid() -> void:
 	var cost: float = float(get_redraw_cost())
 	if TurnData.money < cost:
 		redraw.disabled = true
 
+## Function that clears the posts before redrawing more posts
 func clear_posts() -> void:
 	for slot in slots:
 		if not slot.get_children().is_empty():
 			slot.get_children()[0].queue_free()
 
+## Function that draws new posts for the player to choose from
 func draw_posts() -> void:
 	ButtonClick.play()
 	update_redraw_button()
@@ -186,6 +197,7 @@ func draw_posts() -> void:
 	clear_posts()
 	determine_posts()
 
+## Function that initializes a random post from the different rarity possibilities
 func ininitialize_random_post(index_max: int, rarity: String) -> Node:
 	var index: int = randi_range(0, index_max)
 	var load_post
@@ -202,6 +214,7 @@ func ininitialize_random_post(index_max: int, rarity: String) -> Node:
 			load_post = load(legendary_posts[index])
 	return load_post.instantiate()
 
+## Function that ensures that a specific threshold isn't crossed when drawing posts (allowing for increasing levels of rarity as days go on)
 func random_float_based_on_day(date: int) -> float:
 	if date <= 3:
 		return randf_range(0.0, TurnData.common_threshold)
@@ -214,7 +227,9 @@ func random_float_based_on_day(date: int) -> float:
 	else:
 		return randf_range(0.0, 1.0)
 
+## Function that determines the random posts to draw in the post selection area
 func determine_posts() -> void:
+	#Check to see if all posts need to be viral
 	if TurnData.all_posts_viral:
 		if not_stored:
 			viral_chance = TurnData.viral_chance
@@ -222,6 +237,7 @@ func determine_posts() -> void:
 		TurnData.viral_chance = 1.0
 	var index: int = 0
 	for slot in slots:
+		#First, load saved posts if there are any
 		if TurnData.saved_posts[index] != null:
 			var post = load(TurnData.saved_posts[index])
 			post = post.instantiate()
@@ -233,7 +249,9 @@ func determine_posts() -> void:
 			if post.viral:
 				post.material = save_shader
 			slot_management(slot, post)
+		#Otherwise, load random posts
 		else:
+			#Check to see if there should be one viral post
 			if TurnData.one_guaranteed_viral_post and not TurnData.all_posts_viral:
 				viral_chance = TurnData.viral_chance
 				TurnData.viral_chance = 1.0
@@ -241,6 +259,7 @@ func determine_posts() -> void:
 			var post
 			if post_chance <= TurnData.common_threshold:
 				var second_chance: float = randf()
+				#Roll for an ally post if applicable
 				if TurnData.num_education_posts_read > 0 and second_chance < 0.25:
 					var ally_post_index: int = randi() % TurnData.num_education_posts_read
 					post = load(ally_posts[ally_post_index])
@@ -268,9 +287,11 @@ func determine_posts() -> void:
 				TurnData.num_viral_posts += 1
 		index += 1
 
+## Function called every frame of the game
 func _process(_delta) -> void:
 	update_buttons()
 
+## Function that checks how large a hand is
 func get_hand_size() -> int:
 	var hand_size: int = 0
 	for post in TurnData.player_hand:
@@ -280,6 +301,7 @@ func get_hand_size() -> int:
 			hand_size += 1
 	return hand_size
 
+## Function that checks if a purchase button is viable with current money amounts
 func update_buttons() -> void:
 	for slot in slots:
 		var post = slot.get_child(0)
@@ -293,9 +315,11 @@ func update_buttons() -> void:
 			else:
 				button.disabled = true
 
+## Function to add a post to a slot
 func slot_management(slot: PanelContainer, post: Node) -> void:
 	slot.add_child(post)
 
+## Function to reparent a post if selected from selection area to post order
 func reparent_post(parent_node: PanelContainer) -> void:
 	var post = parent_node.get_child(0)
 	TurnData.money -= (snapped((TurnData.start_money * post.price_multiplier), 0.01))
@@ -312,6 +336,7 @@ func reparent_post(parent_node: PanelContainer) -> void:
 		parent_node.remove_child(post)
 		new_parent.add_child(post)
 
+## Function to remove a post
 func remove_post(parent_node: PanelContainer) -> void:
 	var index: int = 0
 	for parent in available_posts:
@@ -321,11 +346,13 @@ func remove_post(parent_node: PanelContainer) -> void:
 		index += 1
 	available_posts.append(parent_node)
 
+## Function that updates the player's stats
 func update_data() -> void:
 	money_amount.text = GlobalMethods.determine_money_amount(TurnData.money)
 	followers_amounts.text = str(TurnData.follower_base)
 	sponsors_amounts.text = str(TurnData.sponsors)
 
+## Function that updates the redraw button, checking for free vs. paid redraws
 func update_redraw_button() -> void:
 	if TurnData.num_free_redraws == 0:
 		var cost: float = float(get_redraw_cost())
@@ -345,6 +372,7 @@ func update_redraw_button() -> void:
 			TurnData.num_paid_redraws += 1
 			redraw.text = "Redraw $" + get_redraw_cost()
 
+## Function that calculates the cost of a redraw
 func get_redraw_cost() -> String:
 	var cost: float
 	var money: float = TurnData.start_money
@@ -352,6 +380,7 @@ func get_redraw_cost() -> String:
 	cost = snapped((money * grow_percentage * pow(grow_factor, num_redraws)), 0.01)
 	return GlobalMethods.determine_money_amount(cost)
 
+## Function called when the Post! button is clicked, playing each post's ability, then changing to the next scene
 func play() -> void:
 	ButtonClick.play()
 	if TurnData.all_posts_viral:
@@ -366,6 +395,7 @@ func play() -> void:
 	TurnData.save_data()
 	get_tree().change_scene_to_file("res://Scenes/Screens/follower_award_screen.tscn")
 
+#Event listeners for buttons
 func _on_close_pressed():
 	ButtonClick.play()
 	TurnData.save_data()
@@ -380,6 +410,7 @@ func _on_save_pressed():
 	ButtonClick.play()
 	TurnData.save_data()
 
+#Except this one, which listenes for the closing of the window
 func _notification(what) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		TurnData.save_data()

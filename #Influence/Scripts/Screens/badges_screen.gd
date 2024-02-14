@@ -1,6 +1,9 @@
 extends Control
 
+#The "root" of the scene where everything is drawn
 @onready var root: CanvasLayer = %CanvasLayer
+
+#The grid of buttons for displaying badges
 @onready var texture_button: TextureButton = %TextureButton
 @onready var texture_button_2: TextureButton = %TextureButton2
 @onready var texture_button_3: TextureButton = %TextureButton3
@@ -54,11 +57,14 @@ extends Control
 	texture_button_25
 ]
 
+#Variables that determine which badges to display
 var booleans: Array[bool] = []
 
+#Panel and label to show description of the badges
 var panel: PanelContainer
 var label: Label
 
+## Function called on initialization
 func _ready() -> void:
 	for badge in TurnData.earned_badges:
 		var switch = TurnData.earned_badges[badge]
@@ -73,10 +79,12 @@ func _ready() -> void:
 		connect_buttons(index, button)
 		index += 1
 
+## Function that connects various signals to various methods
 func connect_buttons(index: int, button: TextureButton) -> void:
 	button.connect("mouse_entered", Callable(self, "mouse_over").bind(index))
 	button.connect("mouse_exited", mouse_off)
 
+## Function that runs when the mouse is over the badge button
 func mouse_over(index: int) -> void:
 	ButtonHover.play()
 	panel = PanelContainer.new()
@@ -138,9 +146,11 @@ func mouse_over(index: int) -> void:
 	panel.position = get_global_mouse_position()
 	root.add_child(panel)
 
+## function that runs when the mouse gets off the badge button
 func mouse_off() -> void:
 	root.remove_child(panel)
 
+#Event listeners
 func _on_button_pressed():
 	ButtonClick.play()
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")

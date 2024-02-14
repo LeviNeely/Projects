@@ -36,6 +36,10 @@ window/stretch/aspect="ignore"
 
 script/templates_search_path="res://Scripts/ScriptTemplates"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 theme/custom="res://Assets/Themes/main_theme.tres"

@@ -1,11 +1,13 @@
 extends Control
 
+#Facets of the screen
 @onready var canvas_layer: CanvasLayer = %CanvasLayer
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var v_box_container: VBoxContainer = %VBoxContainer
 @onready var title: Label = %Title
 @onready var label: Label = $CanvasLayer/VBoxContainer/EducationBase/VBoxContainer/MarginContainer/PanelContainer/ScrollContainer/Label
 
+#Various backgrounds and descriptions based on the ending of the game
 const backgrounds: Array[String] = [
 	"res://Assets/Backgrounds/Advocate.png",
 	"res://Assets/Backgrounds/AidedInGenocide.png",
@@ -33,10 +35,12 @@ const descriptions: Array[String] = [
 	"You chose to use your influence for good. Thank you for choosing to speak out and speak up for the people of Saharazad. You chose to give up all the traditional signs of succes - wealth, popularity, and corporate support - for the good of people who could not make that choice. The people of Saharazad are grateful for your help and for you using your voice to amplify theirs. Continue to do good. Continue to find those being oppressed and speak up for them. Continue to use your influence for good. We are all in your debt for the good that you did for the people of Saharazad. Free Saharazad!"
 ]
 
+## Function called on initialization
 func _ready() -> void:
 	determine_end_screen()
 	determine_badges()
 
+## Function that determines which ending screen is displayed
 func determine_end_screen() -> void:
 	if TurnData.num_education_posts_read == 0 and TurnData.num_ally_posts == 0:
 		texture_rect.texture = load(backgrounds[3])
@@ -83,14 +87,17 @@ func determine_end_screen() -> void:
 		title.text = "YOU WERE A TRUE ALLY"
 		label.text = descriptions[10]
 
+#Event listener
 func _on_button_pressed():
 	Music.play_menu_theme()
 	get_tree().change_scene_to_file("res://Scenes/Screens/start_screen.tscn")
 
+## Function that determines which badges were earned
 func determine_badges() -> void:
 	for badge in TurnData.earned_badges:
 		TurnData.earned_badges[badge] = was_badge_earned(badge)
 
+## Function that determines if a badge was earned or not this round
 func was_badge_earned(badge: String) -> bool:
 	match badge:
 		"Trillionaire":

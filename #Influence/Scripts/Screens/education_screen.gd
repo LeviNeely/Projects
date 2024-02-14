@@ -1,15 +1,18 @@
 extends Control
 
+#Screen variables
 @onready var canvas_layer: CanvasLayer = %CanvasLayer
 @onready var back_ground: TextureRect = %BackGround
-@onready var backgrounds: Array[String] = [
+
+#Backgrounds and educational posts that can be displayed
+const backgrounds: Array[String] = [
 	"res://Assets/Backgrounds/Civilians.png",
 	"res://Assets/Backgrounds/Displacement.png",
 	"res://Assets/Backgrounds/Culture.png",
 	"res://Assets/Backgrounds/Apartheid.png",
 	"res://Assets/Backgrounds/Genocide.png"
 ]
-@onready var educational_posts: Array[String] = [
+const educational_posts: Array[String] = [
 	"res://Scenes/Education/education_1.tscn",
 	"res://Scenes/Education/education_2.tscn",
 	"res://Scenes/Education/education_3.tscn",

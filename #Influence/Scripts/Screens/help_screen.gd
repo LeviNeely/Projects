@@ -1,6 +1,9 @@
 extends PanelContainer
 
+#The "root" of the scene where everything is drawn
 @onready var root: Control = %CanvasLayer
+
+#All the different facets of the help menu
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var texture_rect_2: TextureRect = %TextureRect2
 @onready var texture_rect_3: TextureRect = %TextureRect3
@@ -40,7 +43,8 @@ extends PanelContainer
 	panel_container_6
 ]
 
-var text: Array[String] = [
+#The text for each help icon
+const text: Array[String] = [
 	"Money: The current amount of money that you currently have.",
 	"Followers: The number of followers that you currently have.",
 	"Sponsors: The number of sponsors that you currently have.",
@@ -60,19 +64,24 @@ var text: Array[String] = [
 	"Permanents are powerful permanent upgrades that activate at the beginning of every day. Each permanent has different abilities and costs, so read carefully!",
 	"These are different achievements that you can earn if you complete a round (30 days) under certain conditiions. Unlocked after completing your first round."
 ]
+
+#The panel and label that help messages will appear on
 var panel: PanelContainer
 var info: Label
 
+## Function called on initialization
 func _ready() -> void:
 	var index: int = 0
 	for icon in help_icons:
 		connect_icons(index, icon)
 		index += 1
 
+## Connecting signals to various methods
 func connect_icons(index: int, icon: Node) -> void:
 	icon.connect("mouse_entered", Callable(self, "mouse_over").bind(index))
 	icon.connect("mouse_exited", mouse_off)
 
+## Function to be called when the mouse hovers over the icon
 func mouse_over(index: int) -> void:
 	ButtonHover.play()
 	panel = PanelContainer.new()
@@ -84,9 +93,11 @@ func mouse_over(index: int) -> void:
 	panel.position = get_local_mouse_position()
 	root.add_child(panel)
 
+## Function to be called when the mouse leaves the icon
 func mouse_off() -> void:
 	root.remove_child(panel)
 
+#Event listeners
 func _on_button_pressed():
 	ButtonClick.play()
 	queue_free()

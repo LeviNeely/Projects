@@ -1,6 +1,6 @@
 extends Control
 
-#The "root" of the scene
+#The "root" of the scene where everything is drawn
 @onready var root: CanvasLayer = %CanvasLayer
 
 #Permanent selection area variables
@@ -85,6 +85,7 @@ var hide_buttons: bool = false
 var education_offered: bool = false
 @onready var save_shader: ShaderMaterial = preload("res://Assets/Shaders/saved_post.tres")
 
+## Function called on initialization
 func _ready() -> void:
 	randomize()
 	connect_signals()
@@ -95,13 +96,16 @@ func _ready() -> void:
 	assign_permanent_slots()
 	update_date()
 
+## Function to update what day it is in the game
 func update_date() -> void:
 	%Day.text = "Day " + str(TurnData.date - 1)
 
+## Function that makes sure to not offer education posts if all have been seen
 func determine_education_amount() -> void:
 	if TurnData.num_education_posts_read == 5:
 		education_offered = true
 
+## Function that disables buttons of all slots
 func disable_buttons() -> void:
 	for slot in slots:
 		if slot.get_child(0):
@@ -109,6 +113,7 @@ func disable_buttons() -> void:
 			var button = post.find_child("Button")
 			button.disabled = true
 
+## Function that assigns permanents to the various available slots
 func assign_permanent_slots() -> void:
 	for panel in grid_container.get_children():
 		if panel.get_child(0):
@@ -116,10 +121,12 @@ func assign_permanent_slots() -> void:
 		else:
 			available_permanent_slots.append(panel)
 
+## Function that connects signals to their respective methods
 func connect_signals() -> void:
 	TurnData.buy.connect(reparent_permanent)
 	TurnData.delete.connect(remove_permanent)
 
+## Function that updates all necessary player data
 func update_data() -> void:
 	money_amount.text = GlobalMethods.determine_money_amount(TurnData.money)
 	post_chance_value.text = "%.2f" % (TurnData.threshold_modifier * 100) + "%"
@@ -128,6 +135,7 @@ func update_data() -> void:
 	sponsors_amount.text = str(TurnData.sponsors)
 	sponsor_chance_value.text = "%.2f" % (TurnData.sponsor_chance * 100) + "%"
 
+## Function that returns a float based on what day it is, allowing for increasing rarity chances as time goes on
 func random_float_based_on_day(date: int) -> float:
 	if date <= 3:
 		return randf_range(0.0, TurnData.common_threshold)
@@ -140,9 +148,11 @@ func random_float_based_on_day(date: int) -> float:
 	else:
 		return randf_range(0.0, 1.0)
 
+## Function that determines what random permanents should be displayed
 func draw_permanents() -> void:
 	var index: int = 0
 	for slot in slots:
+		#First check to see if there are any saved permanents
 		if TurnData.saved_permanents[index] != null:
 			var permanent = load(TurnData.saved_permanents[index])
 			permanent = permanent.instantiate()
@@ -150,6 +160,7 @@ func draw_permanents() -> void:
 			check_box.button_pressed = true
 			permanent.material = save_shader
 			slot_management(slot, permanent)
+		#Otherwise choose random permanents
 		else:
 			var permanent_chance: float = random_float_based_on_day(TurnData.date - 1)
 			var permanent
@@ -176,9 +187,11 @@ func draw_permanents() -> void:
 				slot_management(slot, permanent)
 		index += 1
 
+## Function to add a permanent to a slot
 func slot_management(slot: PanelContainer, post: Node) -> void:
 	slot.add_child(post)
 
+## Function that initializes a random post based on different rarities
 func initialize_random_permanent(index_max: int, rarity: String) -> Node:
 	var index: int = randi_range(0, index_max)
 	var load_permanent
@@ -195,6 +208,7 @@ func initialize_random_permanent(index_max: int, rarity: String) -> Node:
 			load_permanent = load(legendary_permanents[index])
 	return load_permanent.instantiate()
 
+## Function that fills in the permanents that the player already has purchased
 func fill_in_permanents() -> void:
 	var index: int = 0
 	var panels: Array = grid_container.get_children()
@@ -215,6 +229,7 @@ func fill_in_permanents() -> void:
 			permanent.change_button()
 			vbox.visible = false
 
+## Function that reparents a permanent once it is purchased and continues to the next day
 func reparent_permanent(parent_node: PanelContainer) -> void:
 	hide_buttons = true
 	var permanent = parent_node.get_child(0)
@@ -227,6 +242,7 @@ func reparent_permanent(parent_node: PanelContainer) -> void:
 		new_parent.add_child(permanent)
 	proceed_to_next_day()
 
+## Function that deletes a permanent
 func remove_permanent(parent_node: PanelContainer) -> void:
 	if num_permanents == 9:
 		activate_buttons()
@@ -240,10 +256,12 @@ func remove_permanent(parent_node: PanelContainer) -> void:
 	available_permanent_slots.insert(0, parent_node)
 	num_permanents -= 1
 
+## Function called every frame of the game
 func _process(_delta) -> void:
 	if num_permanents == 9:
 		disable_buttons()
 
+## Function that activates buttons, allowing for purchase
 func activate_buttons() -> void:
 	for slot in slots:
 		if slot.get_child(0):
@@ -256,6 +274,7 @@ func activate_buttons() -> void:
 			else:
 				button.disabled = false
 
+## Function that changes the scene to the next round
 func proceed_to_next_day() -> void:
 	ButtonClick.play()
 	if TurnData.date == 31:
@@ -267,6 +286,7 @@ func proceed_to_next_day() -> void:
 		TurnData.save_data()
 		get_tree().change_scene_to_file("res://Scenes/Screens/posting_screen.tscn")
 
+#Event listeners
 func _on_close_pressed():
 	ButtonClick.play()
 	TurnData.save_data()
