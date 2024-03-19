@@ -70,6 +70,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="PanelContainer" parent="CanvasLayer"]
+clip_contents = true
+custom_minimum_size = Vector2(1916, 1080)
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -79,6 +81,7 @@ offset_right = 958.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
 layout_mode = 2
@@ -134,6 +137,7 @@ text = "Day 1"
 
 [node name="MainArea" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="InteractiveZone" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea"]
@@ -317,8 +321,6 @@ text = "0"
 
 [node name="Passives" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
 
 [node name="PassivesTitle" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives"]
 layout_mode = 2
@@ -337,8 +339,6 @@ theme_type_variation = &"EmptyPanel"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 columns = 3
 
 [node name="Permanent1" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
@@ -356,6 +356,7 @@ size_flags_vertical = 3
 
 [node name="Permanent3" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/MainArea/DataSideBar/Passives/PassivesBody/GridContainer"]
 unique_name_in_owner = true
+clip_contents = true
 custom_minimum_size = Vector2(150, 130)
 layout_mode = 2
 size_flags_horizontal = 3
