@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://watuaalagjcd"
+path="res://.godot/imported/noise_generator.glsl-e7da212695da3b0cad3c2caaaf17e9e7.res"
+
+[deps]
+
+source_file="res://Assets/Shaders/noise_generator.glsl"
+dest_files=["res://.godot/imported/noise_generator.glsl-e7da212695da3b0cad3c2caaaf17e9e7.res"]
+
+[params]
+
