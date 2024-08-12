@@ -4,13 +4,13 @@ class_name Projectile
 
 # Assignable variables
 @export var gravitational_center: Node2D
-@export var max_speed: float = 8.0
+@export var max_speed: float = 10.0
 @export var cohesion_weight: float = 1.0
-@export var min_distance: float = 0.00001
+@export var min_distance: float = 1.0
 @export var alignment_weight: float = 1.0
-@export var separation_weight: float = 1000.0
+@export var separation_weight: float = 1.0
 @export var goal_min_distance: float = 0.0
-@export var goal_weight: float = 0.000000001
+@export var goal_weight: float = 1.0
 
 # Other variables
 var other_projectile_list: Array[Projectile] = []

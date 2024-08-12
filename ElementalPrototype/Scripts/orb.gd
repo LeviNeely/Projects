@@ -17,6 +17,7 @@ var player_node: Node2D
 var orb_index: int = 0
 var total_orbs: int = 1
 var angle_offset: float = 0.0
+var boids: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +33,7 @@ func _ready():
 		var projectile: Projectile = preload("res://Scenes/projectile.tscn").instantiate()
 		add_child(projectile)
 		projectile.position = Vector2(randf_range((position.x - 50.0), (position.x + 50.0)), randf_range((position.y - 50.0), (position.y + 50.0)))
+		boids.append(projectile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

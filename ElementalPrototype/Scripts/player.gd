@@ -6,7 +6,7 @@ class_name Player
 @export var speed: float = 300.0
 
 # Other variables
-var total_orbs: int = 3
+var total_orbs: int = 4
 var orbs: Array = []
 
 func _ready() -> void:
