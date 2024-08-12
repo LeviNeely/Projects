@@ -1,0 +1,101 @@
+Game Design Document: Elemental
+Levi Neely
+
+
+Game Overview
+
+High Concept: This is a game about overcoming/overthrowing tyranny and fascism. It's a game about learning from your past mistakes. It's a game about generations and building on what has come before. It's a game about legacies and resistance.
+
+Genre: 2D top-down action RPG, roguelike
+
+Platform(s): Primarily PC, with plans for future console ports (e.g., Switch)
+
+Target Audience: Ages 10 to 40, accessible to a broad audience
+
+Game Goals: Empower the character and complete the story through 3-4 acts
+
+
+Gameplay and Mechanics
+
+Core Gameplay Loop: 
+- Players navigate a map with various encounters (e.g., upgrades, enemy encounters, quests)
+- Each map ends with a boss encounter
+- Upon death, the act restarts with randomized encounters, but the same boss
+- Character progression persists across acts
+- Victory is achieved by defeating the final boss after the final act
+
+Controls: 
+- Keyboard/mouse and controller support
+
+Player Actions: 
+- Attack, defend, interact
+- Utilize elemental powers (starting with one, gaining more with each act)
+- Develop anti-tyranny abilities (e.g., community, empathy, inclusion)
+
+Game Modes: 
+- Main story mode
+- Free play mode (post-story)
+- Ascension mode (increasing difficulty)
+
+Progression and Rewards: 
+- Stat and ability upgrades through encounters
+- Empowerment through story and gameplay progression
+
+
+Story and World
+
+Setting: Realistic world
+
+Plot: Your character has been chosen to fight against a tyrannical ruler. You have been imbued with a great power to control the elements. But this power must be learned and requires great discipline. Even with all your power, the powers you face have control over people, institutions, and law. Will you be able to gain the skills, abilities, allies, and tools required to overthrow this tyrannical rule?
+
+Characters: Main character (randomized name, look, background). Side characters (recurrent roles).
+
+Lore and Backstory: Powers granted by forces of good vs. evil. Potential for powers to reflect societal positions (e.g., privilege vs. growth).
+
+
+Art and Design
+
+Art Style: Pixel-art or basic shapes with artistic shaders
+
+Character Design: Template-based, randomized character design
+
+Environment Design: Map screen (similar to Slay the Spire). Level screen (procedurally generated environments)
+
+User Interface (UI) Design: Simple and clean main UI. In-level spell inventory system
+
+
+Sound and Music
+
+Sound Effects: To be determined
+
+Music Style: To be determined
+
+
+Voice Acting: No voice acting planned
+
+
+Technical Specifications
+
+Game Engine: Godot 4
+
+Platform Requirements: None specific
+
+Performance Goals: Adaptable to various resolutions
+
+
+Marketing and Monetization
+
+Marketing Strategy: Regular devlogs, outreach to streamers
+
+Monetization Model: Upfront purchase
+
+Post-Launch Support: Potential for updates or DLCs
+
+
+Development Timeline
+
+Milestones: Prototyping, workable demo, alpha, beta, release
+
+Deadlines: None specific
+
+Team Roles and Responsibilities: Sole developer, potential artist hire
