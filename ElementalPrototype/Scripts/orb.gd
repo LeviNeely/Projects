@@ -32,7 +32,7 @@ func _ready():
 	for i in range(NUM_BOIDS):
 		var projectile: Projectile = preload("res://Scenes/projectile.tscn").instantiate()
 		add_child(projectile)
-		projectile.position = Vector2(randf_range((position.x - 50.0), (position.x + 50.0)), randf_range((position.y - 50.0), (position.y + 50.0)))
+		projectile.position = Vector2(randf_range((position.x - 20.0), (position.x + 20.0)), randf_range((position.y - 20.0), (position.y + 20.0)))
 		boids.append(projectile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

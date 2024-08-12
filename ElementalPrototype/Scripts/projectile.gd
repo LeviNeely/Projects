@@ -4,12 +4,13 @@ class_name Projectile
 
 # Assignable variables
 @export var gravitational_center: Node2D
-@export var max_speed: float = 10.0
+@export var max_speed: float = 8.0
+@export var min_speed: float = 5.0
 @export var cohesion_weight: float = 1.0
-@export var min_distance: float = 1.0
+@export var min_distance: float = 15.0
 @export var alignment_weight: float = 1.0
-@export var separation_weight: float = 1.0
-@export var goal_min_distance: float = 0.0
+@export var separation_weight: float = 10.0
+@export var goal_min_distance: float = 15.0
 @export var goal_weight: float = 1.0
 
 # Other variables
@@ -43,54 +44,46 @@ func goal() -> void:
 	# We don't need to do anything if there isn't a graviational center
 	if not gravitational_center:
 		return
-	
 	# Calculate the vector to the gravitational center
 	var to_center: Vector2 = gravitational_center.global_position - global_position
 	var distance: float = to_center.length()
-	
-	# Calculate the desired distance to start circling
-	var desired_distance: float = min_distance + 50.0 #adjust if needed
-	
-	# If within the desired distance, calculate tangential velocity
-	if distance < desired_distance:
-		#Normalize the vector to the center
-		var normalized_to_center: Vector2 = to_center.normalized()
-		
-		# Calculate tangential velocity vector (rotate 90 degrees)
-		var tangential_velocity: Vector2 = Vector2(-normalized_to_center.y, normalized_to_center.x)
-		
-		# Apply tangential velocity
-		velocity += tangential_velocity * max_speed * 0.1
-	# Otherwise, steer towards the player
+	# Apply attraction only if the projectile is beyond a certain threshold distance
+	if distance > goal_min_distance + 10.0:
+		var attraction_strength = goal_weight * (distance / (goal_min_distance + 10.0)) # Adjust threshold distance
+		var desired_velocity = to_center.normalized() * max_speed
+		velocity += (desired_velocity - velocity) * attraction_strength
 	else:
-		velocity += (to_center / goal_weight)
+		# If too close, emphasize separation
+		separation()
+	# Apply a small random variation to the velocity to prevent settling
+	velocity += Vector2(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1))
+	# Ensure the velocity doesn't drop too low, to avoid sticking
+	if velocity.length() < min_speed:
+		velocity = velocity.normalized() * min_speed
 
 # Function used to ensure the boids do not collide with other boids
 func separation() -> void:
-	# If there aren't any other boids, we don't have to do anything
-	if other_projectile_list.size() == 0:
-		return
-	
-	# We also check to see if there is a goal and if we are too close to it
-	if gravitational_center:
-		if distance_between(gravitational_center) < goal_min_distance:
-			var goal_separation_velocity: Vector2 = Vector2.ZERO
-			goal_separation_velocity += global_position - gravitational_center.global_position
-			velocity += (goal_separation_velocity / separation_weight)
-	
-	# Otherwise, we figure out if we need to separate from other boids and by how much
-	var separation_velocity: Vector2 = Vector2.ZERO
-	for boid in other_projectile_list:
-		if distance_between(boid) < min_distance:
-			separation_velocity += global_position - boid.global_position
-	velocity += (separation_velocity / separation_weight)
+	var steer = Vector2()
+	var count = 0
+	for other in other_projectile_list:
+		var d = global_position.distance_to(other.global_position)
+		if d > 0 and d < min_distance:
+			var diff = (global_position - other.global_position).normalized()
+			diff /= d
+			steer += diff
+			count += 1
+	if count > 0:
+		steer /= count
+	if steer.length() > 0:
+		steer = steer.normalized() * max_speed - velocity
+		steer = steer.normalized() * separation_weight
+		velocity += steer
 
 # Function to calculate the distance between two boids
 func distance_between(projectile: Node2D) -> float:
 	# We don't want to calculate distance between ourself
 	if self == projectile:
 		return (min_distance + 1000.0)
-	
 	# Otherwise, calculate and return the distance
 	var dist: Vector2 = global_position - projectile.global_position
 	return sqrt(pow(dist.x, 2) + pow(dist.y, 2))
@@ -100,13 +93,11 @@ func alignment() -> void:
 	# If there aren't any other boids, we don't have to do anything
 	if other_projectile_list.size() == 0:
 		return
-	
 	# Otherwise we need to calculate the average velocity of other void within our field of vision
 	var average_velocity: Vector2 = Vector2.ZERO
 	for boid in other_projectile_list:
 		average_velocity += boid.velocity
 	average_velocity /= other_projectile_list.size()
-	
 	# Then we update our own velocity to better align with the others
 	velocity += (average_velocity / alignment_weight)
 
@@ -115,13 +106,10 @@ func cohesion() -> void:
 	# We don't need to worry about other boids if there are none
 	if other_projectile_list.size() == 0:
 		return
-	
 	# Otherwise, we calculate the center of mass
 	var center: Vector2 = center_of_mass()
-	
 	# And then we calculate the change in our velocity to stick to the group
 	var velocity_change: Vector2 = center - global_position
-	
 	# Finally, we update our velocity
 	velocity += (velocity_change / cohesion_weight)
 
@@ -129,7 +117,6 @@ func center_of_mass() -> Vector2:
 	# If the list is empty, we just return zero
 	if other_projectile_list.size() == 0:
 		return Vector2.ZERO
-	
 	# Otherwise, we calculate the center of mass for the list
 	var center: Vector2 = Vector2.ZERO
 	for boid in other_projectile_list:
