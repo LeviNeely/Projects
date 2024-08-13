@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Orb
 
-const NUM_BOIDS: int = 10
+const NUM_BOIDS: int = 25
 
 # Assignable variables
 @export var gravitational_center: Node2D
@@ -11,6 +11,7 @@ const NUM_BOIDS: int = 10
 @export var travel_speed: float = 50.0
 
 # On ready variables
+@onready var trail: Trail = %Trail
 
 # Other variables
 var player_node: Node2D
@@ -41,6 +42,11 @@ func _process(_delta):
 		var current_time = Time.get_ticks_msec() / 1000.0
 		var angle = current_time * rotation_speed + angle_offset
 		var orb_position = player_node.global_position + Vector2(cos(angle), sin(angle)) * orbit_radius
+		# Update the rotation to face the direction of travel
+		var direction = orb_position - global_position
+		if direction.length() > 0:
+			rotation = direction.angle()
+		# Move the orb
 		global_position = orb_position
 
 # A way to dynamically change the index of the orb and total number of orbs

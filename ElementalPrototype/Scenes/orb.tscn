@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b68ue4wki3ae6"]
+[gd_scene load_steps=6 format=3 uid="uid://b68ue4wki3ae6"]
 
 [ext_resource type="Script" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="1_11yyo"]
 [ext_resource type="Script" path="res://Scripts/orb.gd" id="1_w5hmy"]
+[ext_resource type="Script" path="res://Scripts/trail.gd" id="3_1yyaw"]
+
+[sub_resource type="Curve" id="Curve_ok1ed"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00124931), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dp3m6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [node name="Orb" type="Node2D"]
 script = ExtResource("1_w5hmy")
@@ -10,3 +18,12 @@ script = ExtResource("1_w5hmy")
 script = ExtResource("1_11yyo")
 size = Vector2(25, 25)
 style = 2
+fill_color = Color(1, 0, 0, 1)
+
+[node name="Trail" type="Line2D" parent="."]
+unique_name_in_owner = true
+visible = false
+width = 5.0
+width_curve = SubResource("Curve_ok1ed")
+gradient = SubResource("Gradient_dp3m6")
+script = ExtResource("3_1yyaw")

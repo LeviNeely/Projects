@@ -6,11 +6,11 @@ class_name Projectile
 @export var gravitational_center: Node2D
 @export var max_speed: float = 8.0
 @export var min_speed: float = 5.0
-@export var cohesion_weight: float = 1.0
-@export var min_distance: float = 15.0
+@export var cohesion_weight: float = 2.0
+@export var min_distance: float = 10.0
 @export var alignment_weight: float = 1.0
-@export var separation_weight: float = 10.0
-@export var goal_min_distance: float = 15.0
+@export var separation_weight: float = 1.0
+@export var goal_min_distance: float = 25.0
 @export var goal_weight: float = 1.0
 
 # Other variables
@@ -30,7 +30,11 @@ func _process(delta) -> void:
 	separation()
 	goal()
 	limit_speed()
+	# Move the projectile
 	global_position += (velocity * max_speed * delta)
+	# Rotate the projectile
+	if velocity.length() > 0:
+		rotation = velocity.angle()
 
 # Function to limit the speed so things do not get out of hand
 func limit_speed() -> void:
