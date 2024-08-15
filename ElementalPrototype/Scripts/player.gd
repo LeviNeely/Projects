@@ -56,9 +56,8 @@ func update_orbs() -> void:
 	for i in range(orbs.size()):
 		orbs[i].set_index(i, total_orbs)
 
-func make_trail() -> void:
-	if current_trail:
-		current_trail.stop()
-	current_trail = Trail.create()
-	add_child(current_trail)
-	
+#func make_trail() -> void:
+	#if current_trail:
+		#current_trail.stop()
+	#current_trail = Trail.create()
+	#add_child(current_trail)

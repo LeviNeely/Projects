@@ -5,6 +5,15 @@ extends Line2D
 const MAX_POINTS: int = 750
 # Ready Curve
 @onready var curve := Curve2D.new()
+# Setup gradient for the trail color
+#var gradient = Gradient.new()
+# Set gradient color to match parent
+func _ready() -> void:
+	# attempting to get color from parent - does not work
+	var parent_color = get_parent().get("modulate")
+	# go from that color to lighter version of it - manually set color to red because I can't get color from parent properly
+	gradient.set_color(0, Color.RED)
+	gradient.set_color(1, Color.RED.lightened(0.6))
 
 func _process(delta: float) -> void:
 	# Add the orb's current position to the curve
