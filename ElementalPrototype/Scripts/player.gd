@@ -9,6 +9,8 @@ class_name Player
 var total_orbs: int = 4
 var orbs: Array = []
 
+var current_trail: Trail
+
 func _ready() -> void:
 	spawn_orbs()
 
@@ -27,6 +29,11 @@ func spawn_orbs() -> void:
 		add_child(orb)
 		orbs.append(orb)
 		orb.set_index(i, total_orbs)
+		
+		# Create a trail for each orb
+		var trail = Trail.create()
+		orb.add_child(trail)
+		trail.set_owner(orb)
 
 # Function to set total_orbs
 func set_total_orbs(new_total: int) -> void:
@@ -48,3 +55,10 @@ func update_orbs() -> void:
 	# Update indices of existing orbs
 	for i in range(orbs.size()):
 		orbs[i].set_index(i, total_orbs)
+
+func make_trail() -> void:
+	if current_trail:
+		current_trail.stop()
+	current_trail = Trail.create()
+	add_child(current_trail)
+	
