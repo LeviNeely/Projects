@@ -22,6 +22,7 @@ func _physics_process(_delta) -> void:
 		velocity = Vector2.ZERO
 	move_and_slide()
 
+
 # Function to spawn orbs
 func spawn_orbs() -> void:
 	for i in range(total_orbs):
@@ -33,7 +34,6 @@ func spawn_orbs() -> void:
 		# Create a trail for each orb
 		var trail = Trail.create()
 		orb.add_child(trail)
-		trail.set_owner(orb)
 
 # Function to set total_orbs
 func set_total_orbs(new_total: int) -> void:
@@ -56,8 +56,3 @@ func update_orbs() -> void:
 	for i in range(orbs.size()):
 		orbs[i].set_index(i, total_orbs)
 
-#func make_trail() -> void:
-	#if current_trail:
-		#current_trail.stop()
-	#current_trail = Trail.create()
-	#add_child(current_trail)
